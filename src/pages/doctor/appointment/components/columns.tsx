@@ -109,10 +109,7 @@ export const ColumnsAppointment = (): ColumnDef<AppointmentDataType>[] => [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Time" />
     ),
-    cell: ({ row }) => (
-      // <div className="w-20">{`${row.getValue("maximumDuration")} days`}</div>
-      <div className="w-20">{row.original.time}</div>
-    ),
+    cell: ({ row }) => <div className="w-20">{row.original.time}</div>,
   },
   {
     accessorKey: "status",
@@ -121,26 +118,9 @@ export const ColumnsAppointment = (): ColumnDef<AppointmentDataType>[] => [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Status" />
     ),
-    cell: ({ row }) => (
-      // <div className="w-20">{`${row.getValue("maximumDuration")} days`}</div>
-      <div className="w-20">{row.original.status}</div>
-    ),
+    cell: ({ row }) => <div className="w-20">{row.original.status}</div>,
   },
-  // {
-  //   accessorKey: "treatment",
-  //   enableSorting: false,
-  //   enableHiding: false,
-  //   header: ({ column }) => (
-  //     <DataTableColumnHeader column={column} title="Status" />
-  //   ),
-  //   cell: ({ row }) => (
-  //     <div className="w-20">
-  //       <Badge variant="outline" className="text-nowrap py-1">
-  //         {row.original.treatment}
-  //       </Badge>
-  //     </div>
-  //   ),
-  // },
+
   // {
   //   id: "actions",
   //   enableSorting: false,

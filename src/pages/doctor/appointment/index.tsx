@@ -11,6 +11,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import AppointmentForm from "./components/appointment-form";
+import { DialogModal } from "@/components/common/dialog/dialog-modal";
+import { Cross2Icon } from "@radix-ui/react-icons";
 export default function Appointment() {
   const columns = React.useMemo(() => ColumnsAppointment(), []);
   const [allAppointments, setAllAppointments] = React.useState<
@@ -57,9 +60,29 @@ export default function Appointment() {
             placeholder="Search patients"
             className="w-1/3 rounded-xl bg-white"
           />
-          <button className="rounded-full items-center p-2 border border-_p-ocean-green bg-_s-honeydew">
-            <PlusIcon size={20} />
-          </button>
+          <DialogModal
+            hasTrigger
+            className="rounded-xl border-2 border-_p-ocean-green px-12 pt-5 pb-12"
+            DialogTrigger={
+              <button className="rounded-full items-center p-2 border border-_p-ocean-green bg-_s-honeydew">
+                <PlusIcon size={20} />
+              </button>
+            }
+            DialogTitle={
+              <p className="text-lg font-bold text-center">
+                Add new Appointment
+              </p>
+            }
+            DialogContent={<AppointmentForm />}
+            DialogCloser={
+              <button
+                className="text-neutral-800 bg-_gray-300 absolute top-[10px] right-[10px] inline-flex size-10 appearance-none items-center justify-center rounded-full focus:shadow-[0_0_0_2px] focus:outline-none"
+                aria-label="Close"
+              >
+                <Cross2Icon />
+              </button>
+            }
+          />
         </aside>
       </section>
       <DataTable columns={columns} data={allAppointments} count={0} limit={4} />

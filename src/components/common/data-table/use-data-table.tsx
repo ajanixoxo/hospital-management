@@ -1,6 +1,5 @@
-"use client"
+"use client";
 
-import * as React from "react"
 import {
   getCoreRowModel,
   getFacetedRowModel,
@@ -11,8 +10,8 @@ import {
   useReactTable,
   type ColumnDef,
   type VisibilityState,
-} from "@tanstack/react-table"
-
+} from "@tanstack/react-table";
+import { useState, useEffect } from "react";
 
 interface UseDataTableProps<TData, TValue> {
   /**
@@ -20,20 +19,20 @@ interface UseDataTableProps<TData, TValue> {
    * @default []
    * @type TData[]
    */
-  data: TData[]
+  data: TData[];
 
   /**
    * The columns of the table.
    * @default []
    * @type ColumnDef<TData, TValue>[]
    */
-  columns: ColumnDef<TData, TValue>[]
+  columns: ColumnDef<TData, TValue>[];
 
   /**
    * The number of pages in the table.
    * @type number
    */
-  pageCount: number
+  pageCount: number;
 
   /**
    * The default number of rows per page.
@@ -41,7 +40,7 @@ interface UseDataTableProps<TData, TValue> {
    * @type number | undefined
    * @example 20
    */
-  defaultPerPage?: number
+  defaultPerPage?: number;
 
   /**
    * The default sort order.
@@ -49,7 +48,7 @@ interface UseDataTableProps<TData, TValue> {
    * @type `${Extract<keyof TData, string | number>}.${"asc" | "desc"}` | undefined
    * @example "createdAt.desc"
    */
-  defaultSort?: `${Extract<keyof TData, string | number>}.${"asc" | "desc"}`
+  defaultSort?: `${Extract<keyof TData, string | number>}.${"asc" | "desc"}`;
 
   /**
    * Defines filter fields for the table. Supports both dynamic faceted filters and search filters.
@@ -87,9 +86,8 @@ interface UseDataTableProps<TData, TValue> {
    * @default false
    * @type boolean
    */
-  enableAdvancedFilter?: boolean
+  enableAdvancedFilter?: boolean;
 }
-
 
 export function useDataTable<TData, TValue>({
   data,
@@ -97,46 +95,30 @@ export function useDataTable<TData, TValue>({
   pageCount,
   enableAdvancedFilter = false,
 }: UseDataTableProps<TData, TValue>) {
-
-
-
   // Memoize computation of searchableColumns and filterableColumns
 
-
-
- 
-
   // Table states
-  const [rowSelection, setRowSelection] = React.useState({})
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
+  const [rowSelection, setRowSelection] = useState({});
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 
+  const [mounted, setMounted] = useState(false);
 
-
-
-
-
-  const [mounted, setMounted] = React.useState(false)
-
-  React.useEffect(() => {
+  useEffect(() => {
     // Opt out when advanced filter is enabled, because it contains additional params
-    if (enableAdvancedFilter) return
+    if (enableAdvancedFilter) return;
 
     // Prevent resetting the page on initial render
     if (!mounted) {
-      setMounted(true)
-      return
+      setMounted(true);
+      return;
     }
 
     // Initialize new params
 
-
-    table.setPageIndex(0)
+    table.setPageIndex(0);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-
-  ])
+  }, []);
 
   const table = useReactTable({
     data,
@@ -164,7 +146,7 @@ export function useDataTable<TData, TValue>({
     manualPagination: true,
     manualSorting: true,
     manualFiltering: true,
-  })
+  });
 
-  return { table }
+  return { table };
 }

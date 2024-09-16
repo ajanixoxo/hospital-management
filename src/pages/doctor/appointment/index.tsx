@@ -2,7 +2,6 @@ import { DataTable } from "@/components/common/data-table/data-table";
 import { Input } from "@/components/ui/input";
 import { PlusIcon } from "lucide-react";
 import { AppointmentDataType, ColumnsAppointment } from "./components/columns";
-import * as React from "react";
 import {
   Select,
   SelectContent,
@@ -14,13 +13,14 @@ import {
 import AppointmentForm from "./components/appointment-form";
 import { DialogModal } from "@/components/common/dialog/dialog-modal";
 import { Cross2Icon } from "@radix-ui/react-icons";
+import { useMemo, useState, useEffect } from "react";
 export default function Appointment() {
-  const columns = React.useMemo(() => ColumnsAppointment(), []);
-  const [allAppointments, setAllAppointments] = React.useState<
-    AppointmentDataType[]
-  >([]);
+  const columns = useMemo(() => ColumnsAppointment(), []);
+  const [allAppointments, setAllAppointments] = useState<AppointmentDataType[]>(
+    []
+  );
 
-  React.useEffect(() => {
+  useEffect(() => {
     (async () => {
       const res = await fetch(`${import.meta.env.VITE_API_URL}/appointments`, {
         method: "GET",

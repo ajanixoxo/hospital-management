@@ -5,7 +5,7 @@ import {
   FormLabel,
 } from "@/components/ui/form";
 import { FormRadioGroupProps } from "@/types";
-import { FieldValues, useForm, useFormContext } from "react-hook-form";
+import { FieldValues, useFormContext } from "react-hook-form";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 
 export default function FormRadioGroup<T extends FieldValues>(

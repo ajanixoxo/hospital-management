@@ -62,7 +62,8 @@ export const ColumnsAppointment = (): ColumnDef<AppointmentDataType>[] => [
     cell: ({ row }) => (
       <div className="flex items-center space-x-2">
         <Avatar>
-          <AvatarImage src={row.original.avatar} />
+          {/* <AvatarImage src={row.original.avatar} /> */}
+          <AvatarImage src={`https://github.com/shadcn.png`} />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <span className="text-nowrap">{row.original.name}</span>

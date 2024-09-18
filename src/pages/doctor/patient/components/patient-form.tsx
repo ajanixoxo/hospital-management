@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import FormInput from "@/components/common/form-input";
 import FormRadioGroup from "@/components/common/form-radio";
 import { Button } from "@/components/ui/button";
+import FileUpload from "./file-upload";
 
 const schema = z.object({
   fullName: z
@@ -132,15 +133,7 @@ export default function PatientForm() {
             formItemClassname="w-full"
           />
         </div>
-        <FormRadioGroup
-          name={""}
-          label={"Book an appointment for"}
-          className="flex"
-          radios={[
-            { label: "Checkup", value: "checkup" },
-            { label: "Surgery", value: "surgery" },
-          ]}
-        />
+        <FileUpload />
         <Button
           className="rounded-xl w-full h-10 bg-_p-ocean-green text-white mt-8"
           size={`default`}

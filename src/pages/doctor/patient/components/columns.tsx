@@ -133,7 +133,7 @@ export const ColumnsAppointment = (): ColumnDef<AppointmentDataType>[] => [
         className="text-right"
       />
     ),
-    cell: function Cell({ row }) {
+    cell: function Cell({}) {
       return (
         <>
           <div className="flex space-x-2 items-center justify-end">

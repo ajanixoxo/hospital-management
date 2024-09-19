@@ -13,7 +13,7 @@ import {
 import { DialogModal } from "@/components/common/dialog/dialog-modal";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { useMemo, useState, useEffect } from "react";
-import PatientForm from "./components/patient-form";
+import PatientForm from "./components/add-patient-form";
 
 export default function Patient() {
   const columns = useMemo(() => ColumnsAppointment(), []);

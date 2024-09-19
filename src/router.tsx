@@ -5,6 +5,7 @@ import PageNotFound from "./pages/general/PageNotFound";
 import About from "./pages/general/About";
 import DoctorLayout from "./components/layout/DoctorLayout";
 import Appointment from "./pages/doctor/appointment";
+import Patient from "./pages/doctor/patient";
 
 // pages
 
@@ -31,6 +32,10 @@ const routes = createBrowserRouter([
       {
         path: "appointment",
         element: <Appointment />,
+      },
+      {
+        path: "patient",
+        element: <Patient />,
       },
     ],
   },

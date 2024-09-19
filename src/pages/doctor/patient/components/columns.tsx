@@ -155,7 +155,7 @@ export const ColumnsAppointment = (): ColumnDef<AppointmentDataType>[] => [
               hasTrigger
               side={`right`}
               SheetContent={<ViewPatientDetails />}
-              className="md:max-w-4xl"
+              className="md:max-w-4xl border-2 border-_p-ocean-green rounded-l-xl"
               SheetTrigger={<AppEditIcon onClick={undefined} />}
             />
             <AppDeleteIcon onClick={undefined} />
@@ -228,7 +228,7 @@ export const ColumnsMedicalReports = (): ColumnDef<MedicalReportsType>[] => [
               hasTrigger
               side={`right`}
               SheetContent={<ViewPatientDetails />}
-              className="md:max-w-4xl"
+              className="md:max-w-4xl rounded-l-xl border-2 border-_p-ocean-green"
               SheetTrigger={<AppDownloadIcon onClick={undefined} />}
             />
             <AppEyeOpenIcon onClick={undefined} />

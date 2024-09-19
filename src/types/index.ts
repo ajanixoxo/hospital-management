@@ -19,6 +19,7 @@ export interface FormTextareaProps<T extends FieldValues> {
   disabled?: boolean;
   readonly?: boolean;
   className?: string;
+  formItemClassname?: string;
 }
 export interface FormRadioGroupProps<T extends FieldValues> {
   name: FieldPath<T>;

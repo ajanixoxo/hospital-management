@@ -2,6 +2,14 @@ import { DataTableColumnHeader } from "@/components/common/data-table/data-table
 import { formatDate } from "@/utils/format";
 import { ColumnDef } from "@tanstack/react-table";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
+import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 
 export type AppointmentDataType = {
   id: string;
@@ -62,7 +70,8 @@ export const ColumnsAppointment = (): ColumnDef<AppointmentDataType>[] => [
     cell: ({ row }) => (
       <div className="flex items-center space-x-2">
         <Avatar>
-          <AvatarImage src={row.original.avatar} />
+          {/* <AvatarImage src={row.original.avatar} /> */}
+          <AvatarImage src={`https://github.com/shadcn.png`} />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <span className="text-nowrap">{row.original.name}</span>
@@ -121,46 +130,41 @@ export const ColumnsAppointment = (): ColumnDef<AppointmentDataType>[] => [
     cell: ({ row }) => <div className="w-20">{row.original.status}</div>,
   },
 
-  // {
-  //   id: "actions",
-  //   enableSorting: false,
-  //   enableHiding: false,
-  //   header: ({ column }) => (
-  //     <DataTableColumnHeader
-  //       column={column}
-  //       title="Actions"
-  //       className="text-right"
-  //     />
-  //   ),
-  //   cell: function Cell({ row }) {
-  //     return (
-  //       <>
-  //         <div className="flex justify-end">
-  //           <DropdownMenu>
-  //             <DropdownMenuTrigger
-  //               asChild
-  //               className="border-none focus:outline-none"
-  //             >
-  //               <Button
-  //                 aria-label="Open menu"
-  //                 variant="ghost"
-  //                 className="flex size-8 p-0 data-[state=open]:bg-muted"
-  //               >
-  //                 <DotsHorizontalIcon className="size-4" aria-hidden="true" />
-  //               </Button>
-  //             </DropdownMenuTrigger>
-  //             <DropdownMenuContent align="end" className="w-40">
-  //               <DropdownMenuItem
-  //                 // disabled={!(row.original.status === "in_progress")}
-  //                 disabled={row.original.age > 18}
-  //               >
-  //                 Initiate
-  //               </DropdownMenuItem>
-  //             </DropdownMenuContent>
-  //           </DropdownMenu>
-  //         </div>
-  //       </>
-  //     );
-  //   },
-  // },
+  {
+    id: "actions",
+    enableSorting: false,
+    enableHiding: false,
+    header: ({ column }) => (
+      <DataTableColumnHeader
+        column={column}
+        title="Actions"
+        className="text-right"
+      />
+    ),
+    cell: function Cell({}) {
+      return (
+        <>
+          <div className="flex justify-end">
+            <DropdownMenu>
+              <DropdownMenuTrigger
+                asChild
+                className="border-none focus:outline-none"
+              >
+                <Button
+                  aria-label="Open menu"
+                  variant="ghost"
+                  className="flex size-8 p-0 data-[state=open]:bg-muted"
+                >
+                  <DotsHorizontalIcon className="size-4" aria-hidden="true" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-40">
+                <DropdownMenuItem>View details</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+        </>
+      );
+    },
+  },
 ];

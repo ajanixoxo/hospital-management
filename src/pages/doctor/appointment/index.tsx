@@ -62,7 +62,7 @@ export default function Appointment() {
           />
           <DialogModal
             hasTrigger
-            className="rounded-xl border-2 border-_p-ocean-green px-12 pt-5 pb-12"
+            className="rounded-xl border-2 border-_p-ocean-green px-12 pt-5 pb-12 overflow-y-auto"
             DialogTrigger={
               <button className="rounded-full items-center p-2 border border-_p-ocean-green bg-_s-honeydew">
                 <PlusIcon size={20} />

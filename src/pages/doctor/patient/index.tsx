@@ -61,7 +61,7 @@ export default function Patient() {
           />
           <DialogModal
             hasTrigger
-            className="rounded-xl border-2 border-_p-ocean-green px-12 pt-5 pb-12 w-[850px]"
+            className="rounded-xl border-2 border-_p-ocean-green px-12 pt-5 pb-12 w-[700px] overflow-y-auto"
             DialogTrigger={
               <button className="flex space-x-2 items-center border border-_p-ocean-green bg-_s-honeydew px-3 py-1.5 rounded-xl">
                 <p className="text-sm">Add Patient</p>

@@ -27,8 +27,11 @@ export default function FormRadioGroup<T extends FieldValues>(
                 className={props.className}
                 orientation={props.orientation}
               >
-                {props.radios?.map((radio) => (
-                  <FormItem className="flex items-center space-x-3 space-y-0">
+                {props.radios?.map((radio, key) => (
+                  <FormItem
+                    className="flex items-center space-x-3 space-y-0"
+                    key={key}
+                  >
                     <FormControl>
                       <RadioGroupItem
                         value={radio.value}

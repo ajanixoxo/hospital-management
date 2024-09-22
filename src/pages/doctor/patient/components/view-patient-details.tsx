@@ -12,7 +12,7 @@ export default function ViewPatientDetails() {
   useEffect(() => {
     (async () => {
       const res = await fetch(
-        `${import.meta.env.VITE_API_URL}/medical-reports`,
+        `${import.meta.env.VITE_PROXY_URL}/medical-reports`,
         {
           method: "GET",
           headers: {

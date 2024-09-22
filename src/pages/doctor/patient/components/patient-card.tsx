@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import ViewPatientDetails from "./view-patient-details";
+import { SideDrawer } from "@/components/common/dialog/side-drawer";
 
 export type Address = {
   houseNumber: number;
@@ -73,15 +75,18 @@ export const PatientCard = (props: PatientCardProps) => {
             </p>
           </li>
         </ul>
-        <Button
-          className="w-full "
-          variant={`secondary`}
-          onClick={() => {
-            console.log("View patient details");
-          }}
-        >
-          View Details
-        </Button>
+        <SideDrawer
+          noHeader
+          hasTrigger
+          side={`right`}
+          SheetContent={<ViewPatientDetails />}
+          className="md:max-w-4xl"
+          SheetTrigger={
+            <Button className="w-full " variant={`secondary`}>
+              View Details
+            </Button>
+          }
+        />
       </footer>
     </article>
   );

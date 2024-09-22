@@ -12,9 +12,12 @@ export default function ViewPatientDetails() {
   useEffect(() => {
     (async () => {
       const res = await fetch(
-        `${import.meta.env.VITE_API_URL}/medicalreports`,
+        `${import.meta.env.VITE_API_URL}/medical-reports`,
         {
           method: "GET",
+          headers: {
+            "x-api-key": import.meta.env.VITE_API_KEY,
+          },
         }
       );
       const data = await res.json();

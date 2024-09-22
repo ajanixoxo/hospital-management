@@ -6,7 +6,6 @@ import FormInput from "@/components/common/form-input";
 import FormRadioGroup from "@/components/common/form-radio";
 import { Button } from "@/components/ui/button";
 import FileUpload from "./file-upload";
-import FormTextarea from "@/components/common/form-textarea";
 
 const schema = z.object({
   fullName: z
@@ -111,10 +110,11 @@ export default function PatientForm() {
           </aside>
         </section>
         <div className="w-full">
-          <FormTextarea
-            className="rounded-xl resize-none"
+          <FormInput
+            className="rounded-xl"
             label="Address"
             name="address"
+            type={"text"}
           />
         </div>
         <div className="flex items-center w-full space-x-12">

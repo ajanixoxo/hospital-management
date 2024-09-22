@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { DownloadIcon, FilterIcon } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -35,7 +35,7 @@ export default function Patient() {
   const [limit, setLimit] = useState<string>("10");
 
   const debouncedSearchValue = useDebounce(searchValue, 500);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   function filterPatients(
     patients: Patient[] | undefined,
@@ -167,7 +167,18 @@ export default function Patient() {
               </PaginationItem>
               {pages?.map((page) => (
                 <PaginationItem>
-                  <PaginationLink href={`?page=${page}`}>{page}</PaginationLink>
+                  <PaginationLink
+                    className={cn(
+                      searchParams.get("page") === String(page) &&
+                        buttonVariants({
+                          variant: "default",
+                          size: "sm",
+                        })
+                    )}
+                    href={`?page=${page}`}
+                  >
+                    {page}
+                  </PaginationLink>
                 </PaginationItem>
               ))}
               {/* <PaginationItem>

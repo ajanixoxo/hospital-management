@@ -22,12 +22,18 @@ export default function Appointment() {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/appointments`, {
-        method: "GET",
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_PROXY_URL}/appointments`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
+          },
+        }
+      );
       const data = await res.json();
-      const slice = data.slice(0, 10);
-      setAllAppointments(slice);
+      setAllAppointments(data?.data);
     })();
   }, []);
 
@@ -62,7 +68,7 @@ export default function Appointment() {
           />
           <DialogModal
             hasTrigger
-            className="rounded-xl border-2 border-_p-ocean-green px-12 pt-5 pb-12 overflow-y-auto"
+            className="rounded-xl border-2 border-_p-ocean-green px-12 pt-5 pb-12 overflow-y-auto w-[547px]"
             DialogTrigger={
               <button className="rounded-full items-center p-2 border border-_p-ocean-green bg-_s-honeydew">
                 <PlusIcon size={20} />

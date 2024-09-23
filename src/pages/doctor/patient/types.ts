@@ -13,3 +13,7 @@ export interface PaginationResponse {
   totalPages: number;
   count: number;
 }
+
+// count
+// currPage
+//

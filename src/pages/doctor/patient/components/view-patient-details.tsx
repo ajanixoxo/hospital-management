@@ -4,6 +4,7 @@ import { ColumnsMedicalReports, MedicalReportsType } from "./columns";
 import { useEffect, useMemo, useState } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Fieldset } from "@/components/common/field";
+import { PaginationResponse } from "../types";
 
 export default function ViewPatientDetails() {
   const [medicalReports, setMedicalReports] = useState<MedicalReportsType[]>();
@@ -20,8 +21,11 @@ export default function ViewPatientDetails() {
           },
         }
       );
-      const data = await res.json();
-      setMedicalReports(data);
+      const data = (await res.json()) as {
+        data: MedicalReportsType[];
+        pagination: PaginationResponse;
+      };
+      setMedicalReports(data?.data);
     })();
   }, []);
 

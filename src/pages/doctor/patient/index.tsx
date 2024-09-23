@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/select";
 import { useSearchParams } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export default function Patient() {
   const [viewPatients, setViewPatients] = useState<Patient[]>();
@@ -120,24 +121,26 @@ export default function Patient() {
           </aside>
         </div>
       </header>
-      <section className="`flex-1 h-full grid grid-cols-5 gap-4 self-start">
-        {editedPatients?.map((patient) => (
-          <PatientCard
-            key={patient.id}
-            id={patient.id}
-            fullName={patient.fullName}
-            avatar={patient.avatar}
-            dateOfBirth={patient.dateOfBirth}
-            address={patient.address}
-            weight={patient.weight}
-            bloodPressure={patient.bloodPressure}
-            bloodGlucose={patient.bloodGlucose}
-          />
-        ))}
-      </section>
+      <ScrollArea scrollHideDelay={200} className="h-[73vh] w-full">
+        <section className="flex flex-wrap gap-6">
+          {editedPatients?.map((patient) => (
+            <PatientCard
+              key={patient.id}
+              id={patient.id}
+              fullName={patient.fullName}
+              avatar={patient.avatar}
+              dateOfBirth={patient.dateOfBirth}
+              address={patient.address}
+              weight={patient.weight}
+              bloodPressure={patient.bloodPressure}
+              bloodGlucose={patient.bloodGlucose}
+            />
+          ))}
+        </section>
+      </ScrollArea>
       <footer className="flex items-center justify-between">
         <aside>
-          <Select disabled onValueChange={setLimit}>
+          <Select onValueChange={setLimit}>
             <SelectTrigger className="w-32">
               <SelectValue placeholder="Count" />
             </SelectTrigger>

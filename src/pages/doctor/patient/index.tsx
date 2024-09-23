@@ -88,7 +88,7 @@ export default function Patient() {
   }, [viewPatients, debouncedSearchValue]);
 
   return (
-    <main className="rounded-lg flex flex-col w-full bg-white min-h-full p-4 space-y-6">
+    <main className="rounded-lg flex flex-col w-full bg-white h-full p-4 space-y-6">
       <header className="w-full flex flex-col space-y-6">
         <p className="font-medium text-3xl">Patient List</p>
         <div className="flex justify-between items-center">
@@ -120,7 +120,7 @@ export default function Patient() {
           </aside>
         </div>
       </header>
-      <section className="`flex-1 grid grid-cols-5 gap-4 self-start overflow-x-hidden overflow-y-auto">
+      <section className="`flex-1 h-full grid grid-cols-5 gap-4 self-start">
         {editedPatients?.map((patient) => (
           <PatientCard
             key={patient.id}

@@ -9,7 +9,7 @@ import {
 
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { FormInputProps } from "@/types";
+import { FormInputProps } from "@/components/common/form/types";
 
 export default function FormInput<T extends FieldValues>(
   props: FormInputProps<T>

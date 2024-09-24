@@ -27,7 +27,7 @@ const routes = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <div>Doctor Home</div>,
+        element: <div>Appointment Details</div>,
       },
       {
         path: "appointment",
@@ -36,6 +36,10 @@ const routes = createBrowserRouter([
       {
         path: "patient",
         element: <Patient />,
+      },
+      {
+        path: "appointment/:id",
+        element: <div>Doctor Profile</div>,
       },
     ],
   },

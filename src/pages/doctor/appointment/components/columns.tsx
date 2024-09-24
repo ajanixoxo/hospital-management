@@ -10,6 +10,7 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import { DotsHorizontalIcon } from "@radix-ui/react-icons";
+import { Link } from "react-router-dom";
 
 export type AppointmentDataType = {
   id: string;
@@ -62,7 +63,7 @@ export const ColumnsAppointment = (): ColumnDef<AppointmentDataType>[] => [
   },
   {
     accessorKey: "name",
-    enableSorting: false,
+    enableSorting: true,
     enableHiding: false,
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Name" />
@@ -141,7 +142,7 @@ export const ColumnsAppointment = (): ColumnDef<AppointmentDataType>[] => [
         className="text-right"
       />
     ),
-    cell: function Cell({}) {
+    cell: function Cell({ row }) {
       return (
         <>
           <div className="flex justify-end">
@@ -159,7 +160,11 @@ export const ColumnsAppointment = (): ColumnDef<AppointmentDataType>[] => [
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-40">
-                <DropdownMenuItem>View details</DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to={`/doctor/appointment/${row.original.id}`}>
+                    View
+                  </Link>
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>

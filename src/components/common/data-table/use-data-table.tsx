@@ -1,12 +1,12 @@
-"use client";
-
 import {
+  ColumnFiltersState,
   getCoreRowModel,
   getFacetedRowModel,
   getFacetedUniqueValues,
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
+  SortingState,
   useReactTable,
   type ColumnDef,
   type VisibilityState,
@@ -100,6 +100,8 @@ export function useDataTable<TData, TValue>({
   // Table states
   const [rowSelection, setRowSelection] = useState({});
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
+  const [sorting, setSorting] = useState<SortingState>([]);
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   const [mounted, setMounted] = useState(false);
 
@@ -126,16 +128,16 @@ export function useDataTable<TData, TValue>({
     pageCount: pageCount ?? -1,
     state: {
       // pagination,
-      // sorting,
+      sorting,
       columnVisibility,
       rowSelection,
-      // columnFilters,
+      columnFilters,
     },
     enableRowSelection: true,
     onRowSelectionChange: setRowSelection,
     // onPaginationChange: setPagination,
-    // onSortingChange: setSorting,
-    // onColumnFiltersChange: setColumnFilters,
+    onSortingChange: setSorting,
+    onColumnFiltersChange: setColumnFilters,
     onColumnVisibilityChange: setColumnVisibility,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
@@ -143,9 +145,10 @@ export function useDataTable<TData, TValue>({
     getSortedRowModel: getSortedRowModel(),
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
-    manualPagination: true,
-    manualSorting: true,
-    manualFiltering: true,
+    // will handle pagination, sorting, and filtering manually in the future
+    // manualPagination: true,
+    // manualSorting: true,
+    // manualFiltering: true,
   });
 
   return { table };

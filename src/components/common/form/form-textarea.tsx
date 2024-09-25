@@ -1,5 +1,3 @@
-"use client";
-
 import { FieldValues, useFormContext } from "react-hook-form";
 import { cn } from "@/lib/utils";
 import {
@@ -11,7 +9,7 @@ import {
 } from "@/components/ui/form";
 
 import { Textarea } from "@/components/ui/textarea";
-import { FormTextareaProps } from "@/types";
+import { FormTextareaProps } from "@/components/common/form/types";
 
 export default function FormTextarea<T extends FieldValues>(
   props: FormTextareaProps<T>

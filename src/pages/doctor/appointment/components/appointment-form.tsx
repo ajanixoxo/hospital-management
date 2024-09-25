@@ -2,8 +2,8 @@ import { Form } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import FormInput from "@/components/common/form-input";
-import FormRadioGroup from "@/components/common/form-radio";
+import FormInput from "@/components/common/form/form-input";
+import FormRadioGroup from "@/components/common/form/form-radio";
 import { Button } from "@/components/ui/button";
 
 const schema = z.object({

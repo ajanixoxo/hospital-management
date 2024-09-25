@@ -1,5 +1,3 @@
-"use client";
-
 import { ColumnDef, flexRender } from "@tanstack/react-table";
 
 import {
@@ -14,6 +12,7 @@ import {
 import React from "react";
 import { cn } from "@/lib/utils";
 import { useDataTable } from "./use-data-table";
+import { ExtendDataTableRefMethods, ExtendDataTableProps } from "./types";
 
 interface TasksTableProps<TData, TValue>
   extends React.HTMLAttributes<HTMLElement> {
@@ -22,9 +21,12 @@ interface TasksTableProps<TData, TValue>
   limit: number;
   pageSizeOptions?: number[];
   columns: ColumnDef<TData, TValue>[];
-  toolbar?: React.ReactNode;
+  Toolbar?: React.ForwardRefExoticComponent<
+    ExtendDataTableProps<TData> & React.RefAttributes<ExtendDataTableRefMethods>
+  >;
   className?: string;
   toolbarClassName?: string;
+  hasToolbar?: boolean;
 }
 export function DataTable<TData, TValue>({
   data,
@@ -32,6 +34,7 @@ export function DataTable<TData, TValue>({
   limit,
   columns,
   className,
+  Toolbar,
 }: TasksTableProps<TData, TValue>) {
   const defaultPerPage = limit;
   const pageCount = count;
@@ -40,6 +43,17 @@ export function DataTable<TData, TValue>({
 
   return (
     <div>
+      {Toolbar && (
+        <Toolbar
+          filterFields={[
+            { value: "name", label: "Name" },
+            { value: "description", label: "Description" },
+            { value: "status", label: "Status" },
+            { value: "createdAt", label: "Created At" },
+          ]}
+          table={table}
+        />
+      )}
       <div className={cn(className)}>
         <Table>
           <TableHeader className=" font-bold">

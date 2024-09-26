@@ -1,15 +1,10 @@
 import { DataTableColumnHeader } from "@/components/common/data-table/data-table-column-header";
 import { SideDrawer } from "@/components/common/dialog/side-drawer";
-import {
-  AppDeleteIcon,
-  AppEditIcon,
-  AppEyeOpenIcon,
-} from "@/components/common/icons";
+import { AppDeleteIcon, AppEyeOpenIcon } from "@/components/common/icons";
 import { Badge } from "@/components/ui/badge";
 import { formatDate } from "@/utils/format";
 import { ColumnDef } from "@tanstack/react-table";
 import ViewTransactionDetails from "./view-transaction-details";
-import ViewPatientDetails from "../../patient/components/view-patient-details";
 
 // export type Status = "success" | "pending" | "failed";
 export type Status = "female" | "male"; // using this to mock the schema of the incoming data from the api,

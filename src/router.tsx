@@ -6,6 +6,7 @@ import About from "./pages/general/About";
 import DoctorLayout from "./components/layout/DoctorLayout";
 import Appointment from "./pages/doctor/appointment";
 import Patient from "./pages/doctor/patient";
+import Transactions from "./pages/doctor/transactions";
 
 // pages
 
@@ -40,6 +41,10 @@ const routes = createBrowserRouter([
       {
         path: "appointment/:id",
         element: <div>Doctor Profile</div>,
+      },
+      {
+        path: "transactions",
+        element: <Transactions />,
       },
     ],
   },

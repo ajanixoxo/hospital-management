@@ -96,6 +96,7 @@ export const AppEyeOpenIcon = forwardRef<SVGElement, AppSVGProps>(
         xmlns="http://www.w3.org/2000/svg"
         style={props.style}
         className={props.className}
+        onClick={props.onClick}
       >
         <circle
           cx="19.1196"
@@ -121,3 +122,4 @@ export const AppEyeOpenIcon = forwardRef<SVGElement, AppSVGProps>(
 AppDeleteIcon.displayName = "AppDeleteIcon";
 AppEditIcon.displayName = "AppEditIcon";
 AppDownloadIcon.displayName = "AppDownloadIcon";
+AppEyeOpenIcon.displayName = "AppEyeOpenIcon";

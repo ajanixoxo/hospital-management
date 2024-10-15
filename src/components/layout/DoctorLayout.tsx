@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FaBars, FaTimes, FaHome, FaUserMd, FaClipboardList, FaHospital, FaBell } from 'react-icons/fa';
 
 

@@ -8,8 +8,14 @@ import {
   SheetFooter,
   SheetClose,
 } from "@/components/ui/sheet";
-import { forwardRef, ReactNode, useImperativeHandle, useState } from "react";
-
+import {
+  forwardRef,
+  ReactNode,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from "react";
+import { useOnClickOutside } from "usehooks-ts";
 type SideDrawerProps = {
   hasTrigger?: boolean;
   noHeader?: boolean;
@@ -26,14 +32,20 @@ type SideDrawerProps = {
   SheetTrigger?: ReactNode;
   SheetContent?: ReactNode;
   SheetClose?: ReactNode;
+
+  /**
+   * Callback when the drawer is opened
+   */
+  onClickOutside?: () => void;
 };
-type SideDrawerMethods = {
+export type SideDrawerMethods = {
   onOpen?: () => void;
   onClose?: () => void;
 };
 
 export const SideDrawer = forwardRef<SideDrawerMethods, SideDrawerProps>(
   (props, ref) => {
+    const watchOutsideClickRef = useRef<HTMLDivElement>(null);
     const [open, setOpen] = useState(false);
     function onOpen() {
       setOpen(true);
@@ -44,10 +56,17 @@ export const SideDrawer = forwardRef<SideDrawerMethods, SideDrawerProps>(
     useImperativeHandle(ref, () => {
       return { onOpen, onClose };
     });
+    useOnClickOutside(watchOutsideClickRef, () => {
+      !props.onClickOutside ? setOpen(false) : props.onClickOutside();
+    });
     return (
       <Sheet open={props.hasTrigger ? undefined : open}>
         <SheetTrigger asChild>{props.SheetTrigger}</SheetTrigger>
-        <SheetContent side={props.side} className={props.className}>
+        <SheetContent
+          side={props.side}
+          className={props.className}
+          ref={watchOutsideClickRef}
+        >
           {!props.noHeader && (
             <SheetHeader>
               <SheetTitle asChild>{props.SheetTitle}</SheetTitle>

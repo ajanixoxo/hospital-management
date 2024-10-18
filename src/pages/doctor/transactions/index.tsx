@@ -1,12 +1,24 @@
 import { DataTable } from "@/components/common/data-table/data-table";
 import { AppDeleteIcon } from "@/components/common/icons";
-import { ForwardRefExoticComponent, useEffect, useMemo, useState } from "react";
+import {
+  ForwardRefExoticComponent,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import {
   ColumnsTransactions,
   TransactionDataType,
 } from "./components/table-columns";
+import {
+  SideDrawer,
+  SideDrawerMethods,
+} from "@/components/common/dialog/side-drawer";
+import ViewTransactionDetails from "./components/view-transaction-details";
 
 export default function Transactions() {
+  const sheetRef = useRef<SideDrawerMethods | null>(null);
   const columns = useMemo(() => ColumnsTransactions(), []);
   const [transactions, setTransactions] = useState<TransactionDataType[]>();
 
@@ -27,31 +39,43 @@ export default function Transactions() {
     })();
   }, []);
   return (
-    <main className="rounded-lg flex flex-col w-full bg-white h-full p-4 space-y-6">
-      <header className="flex flex-col space-y-6">
-        <p className="font-bold text-2xl">Transactions</p>
-        <div className="grid grid-cols-4 gap-x-6">
-          {[1, 2, 3, 4].map((item) => (
-            <HeroCard
-              key={item}
-              icon={AppDeleteIcon}
-              duration="from last year"
-              subTitle="Total Transaction"
-              percentage="10.80%"
-              value="₦ 1,000,000"
-            />
-          ))}
-        </div>
-      </header>
-      <section className="border rounded-lg w-full flex-1 p-2">
-        <DataTable
-          columns={columns}
-          data={transactions ?? []}
-          count={0}
-          limit={10}
-        />
-      </section>
-    </main>
+    <>
+      <SideDrawer
+        ref={sheetRef}
+        noHeader
+        side={`right`}
+        SheetContent={<ViewTransactionDetails />}
+        className="md:max-w-xl"
+      />
+      <main className="rounded-lg flex flex-col w-full bg-white h-full p-4 space-y-6">
+        <header className="flex flex-col space-y-6">
+          <p className="font-bold text-2xl">Transactions</p>
+          <div className="grid grid-cols-4 gap-x-6">
+            {[1, 2, 3, 4].map((item) => (
+              <HeroCard
+                key={item}
+                icon={AppDeleteIcon}
+                duration="from last year"
+                subTitle="Total Transaction"
+                percentage="10.80%"
+                value="₦ 1,000,000"
+              />
+            ))}
+          </div>
+        </header>
+        <section className="border rounded-lg w-full flex-1 p-2">
+          <DataTable
+            columns={columns}
+            data={transactions ?? []}
+            count={0}
+            limit={10}
+            onRowClick={() =>
+              sheetRef.current?.onOpen && sheetRef.current?.onOpen()
+            }
+          />
+        </section>
+      </main>
+    </>
   );
 }
 

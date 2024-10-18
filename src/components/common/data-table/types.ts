@@ -1,4 +1,4 @@
-import { Table } from "@tanstack/react-table";
+import { Row, Table } from "@tanstack/react-table";
 
 export interface SearchParams {
   [key: string]: string | string[] | undefined;
@@ -35,8 +35,10 @@ export interface ExtendDataTableProps<TData> {
   table: Table<TData>;
   filterFields?: FilterField[];
 }
-export interface ExtendDataTableRefMethods {
-  onClick?: (event: string) => void;
+export interface ExtendDataTableRefMethods <TData> extends React.HTMLAttributes<HTMLElement>  {
+  onRowClick?: (row: Row<TData>) => void;
+  onRowDoubleClick?: (row: Row<TData>) => void;
+  onRowHover?: (row: Row<TData>) => void;
 }
 export interface FilterField {
   value: string;

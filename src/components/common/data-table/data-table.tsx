@@ -15,14 +15,15 @@ import { useDataTable } from "./use-data-table";
 import { ExtendDataTableRefMethods, ExtendDataTableProps } from "./types";
 
 interface TasksTableProps<TData, TValue>
-  extends React.HTMLAttributes<HTMLElement> {
+  extends ExtendDataTableRefMethods<TData> {
   data: TData[];
   count: number;
   limit: number;
   pageSizeOptions?: number[];
   columns: ColumnDef<TData, TValue>[];
   Toolbar?: React.ForwardRefExoticComponent<
-    ExtendDataTableProps<TData> & React.RefAttributes<ExtendDataTableRefMethods>
+    ExtendDataTableProps<TData> &
+      React.RefAttributes<ExtendDataTableRefMethods<TData>>
   >;
   className?: string;
   toolbarClassName?: string;
@@ -35,6 +36,9 @@ export function DataTable<TData, TValue>({
   columns,
   className,
   Toolbar,
+  onRowClick,
+  onRowDoubleClick,
+  onRowHover,
 }: TasksTableProps<TData, TValue>) {
   const defaultPerPage = limit;
   const pageCount = count;
@@ -80,6 +84,9 @@ export function DataTable<TData, TValue>({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
+                  onClick={() => onRowClick?.(row)}
+                  onDoubleClick={() => onRowDoubleClick?.(row)}
+                  onMouseEnter={() => onRowHover?.(row)}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id} className="py-4">

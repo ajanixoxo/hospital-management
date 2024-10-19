@@ -1,4 +1,4 @@
-import { ColumnDef, flexRender, Row } from "@tanstack/react-table";
+import { ColumnDef, flexRender } from "@tanstack/react-table";
 
 import {
   Table,

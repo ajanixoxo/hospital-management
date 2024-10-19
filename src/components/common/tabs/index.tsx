@@ -45,7 +45,6 @@ export function TabRouter({ config, tabClassName, variant }: TabRouterProps) {
             {element.element}
           </TabsContent>
         ))}
-        2
       </Tabs>
     </>
   );

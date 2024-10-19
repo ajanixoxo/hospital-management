@@ -1,6 +1,9 @@
 import { TabRouter } from "@/components/common/tabs";
-import BirthReports from "./components/template";
+import BirthReports from "./components/birth-report";
 import { generateId } from "@/utils/helpers";
+import DeathReport from "./components/death-report";
+import InvestigationReports from "./components/investigation-reports";
+import OperationReports from "./components/operation-reports";
 
 export default function DoctorReports() {
   return (
@@ -15,12 +18,17 @@ export default function DoctorReports() {
           {
             id: generateId(),
             name: "Death Reports",
-            element: <div>Death Reports</div>,
+            element: <DeathReport />,
           },
           {
             id: generateId(),
-            name: "Patient Reports",
-            element: <div>Patient Reports</div>,
+            name: "Investigation Reports",
+            element: <InvestigationReports />,
+          },
+          {
+            id: generateId(),
+            name: "Operation Reports",
+            element: <OperationReports />,
           },
         ]}
         variant={`line`}

@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 # Excluded paths and files
-src/test/*
+# src/test/*

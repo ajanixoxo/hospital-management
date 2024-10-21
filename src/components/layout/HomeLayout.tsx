@@ -5,7 +5,7 @@ export default function HomeLayout() {
   return (
       <div className="">
 
- 
+
         <main className="">
           <Outlet />
         </main>

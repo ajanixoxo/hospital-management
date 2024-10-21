@@ -1,6 +1,6 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 import { useState } from 'react';
-import { FaBars, FaTimes, FaHome, FaUserMd, FaClipboardList, FaHospital, FaBell } from 'react-icons/fa';
+import { FaBars, FaTimes, FaHome, FaUserMd, FaClipboardList, FaHospital, FaBell, FaTasks } from 'react-icons/fa';
 
 
 export default function DoctorLayout() {
@@ -61,6 +61,10 @@ export default function DoctorLayout() {
             <li className="flex items-center p-2 hover:bg-purple-600 rounded-md cursor-pointer">
               <FaHospital className="mr-3 text-lg" />
               {isSidebarOpen && <span>Departments</span>}
+            </li>
+            <li className="flex items-center p-2 hover:bg-purple-600 rounded-md cursor-pointer">
+            <Link to={"/doctor/schedule"} className="flex items-center"> <FaTasks className="mr-3 text-lg" />
+              {isSidebarOpen && <span>Schedules</span>}</Link> 
             </li>
           </ul>
         </nav>

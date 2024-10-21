@@ -14,7 +14,6 @@ const ForgotPassword = () => {
 
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Partial<ForgotPasswordFormData>>({});
-  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
 
@@ -23,10 +22,6 @@ const ForgotPassword = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
-  };
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
   };
 
   const validate = (): boolean => {

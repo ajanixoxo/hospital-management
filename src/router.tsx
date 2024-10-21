@@ -11,6 +11,8 @@ import DoctorReports from "./pages/doctor/reports";
 import SchedulePage from "./pages/doctor/Schedule";
 import DoctorDashboard from "./pages/doctor/DoctorDashboard";
 import Login from "./pages/general/Login";
+import Signup from "./pages/general/Signup";
+import ForgotPassword from "./pages/general/ForgotPassord";
 
 // pages
 
@@ -27,6 +29,14 @@ const routes = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <Signup />,
+      },
+      {
+        path: "/forgot-password",
+        element: <ForgotPassword />,
       },
     ],
   },

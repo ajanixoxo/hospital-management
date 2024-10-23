@@ -1,4 +1,3 @@
-import React from "react";
 import { FaSearch } from "react-icons/fa";
 import Patientlist from "./doctor/diagnosis/components/patientLsit";
 

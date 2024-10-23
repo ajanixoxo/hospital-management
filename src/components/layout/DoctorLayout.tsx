@@ -91,6 +91,15 @@ export default function DoctorLayout() {
               />
               {isSidebarOpen && <span>Schedules</span>}
             </NavLinks>
+
+            <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/diagnosis">
+              <FaDiagnoses
+                className={`${isSidebarOpen ? "md:mr-3 " : ""} text-lg`}
+              />
+              {isSidebarOpen && <span>Diagnosis</span>}
+            </NavLinks>
+
+            
           </div>
         </nav>
       </div>

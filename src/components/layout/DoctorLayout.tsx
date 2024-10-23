@@ -8,15 +8,11 @@ import {
   FaTasks,
   FaTimes,
   FaUserMd,
+  FaDiagnoses
 } from "react-icons/fa";
 import { Outlet } from "react-router-dom";
-<<<<<<< HEAD
-import { useState } from 'react';
-import { FaBars, FaTimes, FaHome, FaUserMd, FaClipboardList, FaHospital, FaBell,FaDiagnoses  } from 'react-icons/fa';
 
-=======
 import NavLinks from "./NavLink";
->>>>>>> 09f25cb8194530d27b63debf322eaab7100d3af8
 
 export default function DoctorLayout() {
   // return (
@@ -80,18 +76,6 @@ export default function DoctorLayout() {
                 className={`${isSidebarOpen ? "md:mr-3 " : ""} text-lg`}
               />
               {isSidebarOpen && <span>Appointments</span>}
-<<<<<<< HEAD
-            </li>
-            <li className="flex items-center p-2 hover:bg-purple-600 rounded-md cursor-pointer">
-              <FaHospital className="mr-3 text-lg" />
-              {isSidebarOpen && <span>Departments</span>}
-            </li>
-            <li className="flex items-center p-2 hover:bg-purple-600 rounded-md cursor-pointer">
-              <FaDiagnoses className="mr-3 text-lg" />
-              {isSidebarOpen && <span>Diagnosis</span>}
-            </li>
-          </ul>
-=======
             </NavLinks>
 
             <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/transactions">
@@ -108,7 +92,6 @@ export default function DoctorLayout() {
               {isSidebarOpen && <span>Schedules</span>}
             </NavLinks>
           </div>
->>>>>>> 09f25cb8194530d27b63debf322eaab7100d3af8
         </nav>
       </div>
 

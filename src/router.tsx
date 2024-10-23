@@ -8,7 +8,14 @@ import Appointment from "./pages/doctor/appointment";
 import Patient from "./pages/doctor/patient";
 import Transactions from "./pages/doctor/transactions";
 import DoctorReports from "./pages/doctor/reports";
+
 import Diagnosis from "./pages/Diagnosis";
+
+import SchedulePage from "./pages/doctor/Schedule";
+import DoctorDashboard from "./pages/doctor/DoctorDashboard";
+import Login from "./pages/general/Login";
+import Signup from "./pages/general/Signup";
+import ForgotPassword from "./pages/general/ForgotPassord";
 
 // pages
 
@@ -22,6 +29,18 @@ const routes = createBrowserRouter([
         path: "/about",
         element: <About />,
       },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <Signup />,
+      },
+      {
+        path: "/forgot-password",
+        element: <ForgotPassword />,
+      },
     ],
   },
   {
@@ -30,14 +49,18 @@ const routes = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <div>Appointment Details</div>,
+        element: <div>Docts</div>,
       },
       {
-        path: "appointment",
+        path: "dashboard",
+        element: <DoctorDashboard />,
+      },
+      {
+        path: "appointments",
         element: <Appointment />,
       },
       {
-        path: "patient",
+        path: "patients",
         element: <Patient />,
       },
       {
@@ -53,10 +76,11 @@ const routes = createBrowserRouter([
         element: <DoctorReports />,
       },
       {
-        path: 'diagnosis',
-        element: <Diagnosis />
+        path: "diagnosis",
+        element: <Diagnosis />,
       },
 
+      { path: "Schedule", element: <SchedulePage /> },
     ],
   },
   {

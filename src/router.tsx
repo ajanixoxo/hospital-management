@@ -9,6 +9,9 @@ import Patient from "./pages/doctor/patient";
 import Transactions from "./pages/doctor/transactions";
 import DoctorReports from "./pages/doctor/reports";
 import SchedulePage from "./pages/doctor/Schedule";
+import ProfilePage from "./pages/doctor/settings/ProfilePage";
+import EditProfilePage from "./pages/doctor/settings/EditProfilePage";
+import ChangePassword from "./pages/doctor/settings/ChangePassword";
 
 // pages
 
@@ -53,9 +56,27 @@ const routes = createBrowserRouter([
         element: <DoctorReports />,
       },
       {
-        path: "Schedule",
+        path: "schedule",
         element: <SchedulePage />,
       },
+      {
+       path:"settings",
+       children: [
+        {
+          path: "profile-page",
+          element: <ProfilePage />,
+        },
+        {
+          path: "edit-profile",
+          element: <EditProfilePage />,
+        },
+        {
+          path: "change-password",
+          element: <ChangePassword />,
+        },
+       ]
+      },
+  
     ],
   },
   {

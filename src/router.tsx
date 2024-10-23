@@ -8,6 +8,7 @@ import Appointment from "./pages/doctor/appointment";
 import Patient from "./pages/doctor/patient";
 import Transactions from "./pages/doctor/transactions";
 import DoctorReports from "./pages/doctor/reports";
+import Diagnosis from "./pages/Diagnosis";
 
 // pages
 
@@ -51,6 +52,11 @@ const routes = createBrowserRouter([
         path: "reports",
         element: <DoctorReports />,
       },
+      {
+        path: 'diagnosis',
+        element: <Diagnosis />
+      },
+
     ],
   },
   {

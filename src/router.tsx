@@ -99,6 +99,7 @@ const routes = createBrowserRouter([
         },
        ]
       },
+      {
         path: "diagnosis",
         element: <Diagnosis />,
       },

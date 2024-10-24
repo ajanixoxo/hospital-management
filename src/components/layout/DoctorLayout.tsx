@@ -1,3 +1,5 @@
+import { Outlet, Link } from "react-router-dom";
+import DP from '/pfp.jpg'
 import { useState } from "react";
 import {
   FaBars,
@@ -10,7 +12,6 @@ import {
   FaUserMd,
   FaDiagnoses
 } from "react-icons/fa";
-import { Outlet } from "react-router-dom";
 
 import NavLinks from "./NavLink";
 
@@ -36,7 +37,7 @@ export default function DoctorLayout() {
   };
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen ">
       {/* Sidebar */}
       <div
         className={`bg-white text-black p-4 transition-all duration-300 shadow ${
@@ -118,11 +119,12 @@ export default function DoctorLayout() {
           <div className="flex items-center">
             <FaBell className="text-gray-600 text-2xl mr-6 cursor-pointer" />
             <div className="flex items-center">
+              <Link to="settings/profile-page">
               <img
-                src="https://via.placeholder.com/40"
+                src={DP}
                 alt="Profile"
-                className="rounded-full w-10 h-10 mr-2"
-              />
+                className="rounded-full w-8 object-cover h-8 mr-2"
+              /></Link>
               <span className="text-gray-700 font-medium">Dr. John Doe</span>
             </div>
           </div>

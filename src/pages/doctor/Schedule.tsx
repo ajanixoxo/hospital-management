@@ -1,5 +1,5 @@
-import  { useState } from 'react'
 import { PlusCircle } from 'lucide-react'
+import { useState } from 'react'
 
 type DaySchedule = {
   day: string

@@ -6,7 +6,7 @@ export default function HomeLayout() {
       <div className="">
 
 
-        <main className="">
+        <main className="min-h-[80vh]">
           <Outlet />
         </main>
 

@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import Patientlist from "./doctor/diagnosis/components/PatientTable";
+import Patientlist from "./doctor/diagnosis/components/DiagnosisTable";
 import { useNavigate } from "react-router-dom";
-
+import { Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 const Diagnosis: React.FC = () => {
   const navigate = useNavigate();
+ 
 
   // Example patients data
   const patients = [
@@ -34,7 +36,7 @@ const Diagnosis: React.FC = () => {
 
   const handleEdit = (id: number) => {
     // Navigate to the edit page for the selected patient
-    navigate(`/doctor/edit-diagnosis/${id}`);
+    navigate(`doctor/edit-diagnosis/${id}`);
   };
 
   return (
@@ -46,7 +48,7 @@ const Diagnosis: React.FC = () => {
           </span>
           <input
             type="text"
-            className="px-3 py-2 rounded-sm border border-black"
+            className="px-8 py-2 rounded-sm border border-black"
             style={{ width: "300px" }}
           />
         </div>
@@ -54,7 +56,9 @@ const Diagnosis: React.FC = () => {
           type="button"
           className="bg-purple-700 px-5 py-2 rounded-sm text-white"
         >
-          New Patient Diagnosis Test
+          <Link to={'/doctor/new-diagnosis'}>
+          New Patient Diagnosis Test 
+          </Link>
         </button>
       </div>
       <div className="patient-list w-full mt-7">
@@ -63,6 +67,7 @@ const Diagnosis: React.FC = () => {
           <Patientlist patients={patients} onEditClick={handleEdit} />
         </div>
       </div>
+      <Outlet />
     </div>
   );
 };

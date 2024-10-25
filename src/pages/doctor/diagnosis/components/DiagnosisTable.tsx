@@ -1,5 +1,7 @@
+import NavLinks from "@/components/layout/NavLink";
 import React from "react";
 import { FaEdit, FaPrint, FaTrash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 interface Patient {
   id: number;
@@ -18,7 +20,10 @@ interface PatientsTableProps {
   onEditClick: (id: number) => void;
 }
 
-const Patientlist: React.FC<PatientsTableProps> = ({ patients, onEditClick }) => {
+const Patientlist: React.FC<PatientsTableProps> = ({
+  patients,
+  onEditClick,
+}) => {
   return (
     <div className="" style={{ overflowX: "auto" }}>
       <table className="w-full ">
@@ -53,7 +58,10 @@ const Patientlist: React.FC<PatientsTableProps> = ({ patients, onEditClick }) =>
             >
               <td className="p-6">
                 <div>
-                  <a href="" className="text-sm px-2 py-2 bg-blue-300 rounded-md">
+                  <a
+                    href=""
+                    className="text-sm px-2 py-2 bg-blue-300 rounded-md"
+                  >
                     {items.reportNum}
                   </a>
                 </div>
@@ -95,11 +103,10 @@ const Patientlist: React.FC<PatientsTableProps> = ({ patients, onEditClick }) =>
                   <span className="text-yellow-500 cursor-pointer">
                     <FaPrint />
                   </span>
-                  <span
-                    className="text-purple-500 cursor-pointer"
-                    onClick={() => onEditClick(items.id)} // Use items.id for the onClick handler
-                  >
-                    <FaEdit />
+                  <span className="text-purple-500 cursor-pointer">
+                    <Link to={`/doctor/edit-diagnosis/${items.id}`}>
+                      <FaEdit />
+                    </Link>
                   </span>
                   <span className="text-destructive cursor-pointer">
                     <FaTrash />

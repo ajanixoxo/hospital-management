@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import EditInputDropDown from "./components/EditInputDropDown";
+import React from "react";
 import { Link } from "react-router-dom";
-const EditDiagnosis: React.FC = () => {
+import EditInputDropDown from "./components/EditInputDropDown";
+import { useState } from "react";
+const NewPatientDiagnosis = () => {
   const names: string[] = [
     "John Doe",
     "Jane Smith",
@@ -68,7 +69,7 @@ const EditDiagnosis: React.FC = () => {
     <div className="w-full p-5">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold mb-6">
-          Edit Patient Diagnosis Test
+          New Patient Diagnosis Test
         </h1>
         <button className="border border-purple-500 px-6 py-2 h-10 rounded-md">
           <Link to={"/doctor/diagnosis"}>Back</Link>
@@ -76,35 +77,28 @@ const EditDiagnosis: React.FC = () => {
       </div>
       <div className="container bg-white p-6 h-auto rounded-lg sm:overflow-auto">
         <div className="input-container grid md:grid-cols-4 sm:grid-cols-1 gap-5">
+          <EditInputDropDown
+            label="Name"
+            options={names}
+            selectedOption={selectedName}
+            onSelect={setSelectedName}
+          />
+          <EditInputDropDown
+            label="Name"
+            options={DiagnosisCategory}
+            selectedOption={selectedCategory}
+            onSelect={setSelectedCategory}
+          />
           <div>
-            <span className="mb-3 font-semibold">Patient</span>
-            <EditInputDropDown
-              label="Name"
-              options={names}
-              selectedOption={selectedName}
-              onSelect={setSelectedName}
-            />
-          </div>
-          <div>
-            <span className="mb-3 font-semibold">Diagnosis Category:</span>
-            <EditInputDropDown
-              label="Diagnosis Category"
-              options={DiagnosisCategory}
-              selectedOption={selectedCategory}
-              onSelect={setSelectedCategory}
-            />
-          </div>
-          <div>
-            <span className="mb-2">Report number:</span>
+            <span className="mb-6">Report number:</span>
             <div className="px-3 py-2 w-auto bg-slate-200 rounded-md">
               PM4GO96Q
             </div>
           </div>
-
           {formValue.map((form, index) => (
             <>
               <div className="ml-3">
-                <span className="mb-2">Age:</span>
+                <span className="mb-6">Age:</span>
                 <div>
                   <input
                     type="text"
@@ -118,7 +112,7 @@ const EditDiagnosis: React.FC = () => {
                 </div>
               </div>
               <div>
-                <span className="mb-2">Height:</span>
+                <span className="mb-6">Height:</span>
                 <div>
                   <input
                     type="number"
@@ -132,7 +126,7 @@ const EditDiagnosis: React.FC = () => {
                 </div>
               </div>
               <div>
-                <span className="mb-2">Weight:</span>
+                <span className="mb-6">Weight:</span>
                 <div>
                   <input
                     type="number"
@@ -146,7 +140,7 @@ const EditDiagnosis: React.FC = () => {
                 </div>
               </div>
               <div>
-                <span className="mb-2">Average Glucose:</span>
+                <span className="mb-6">Average Glucose:</span>
                 <div>
                   <input
                     type="text"
@@ -160,7 +154,7 @@ const EditDiagnosis: React.FC = () => {
                 </div>
               </div>
               <div>
-                <span className="mb-2">Fasting Blood Sugar:</span>
+                <span className="mb-6">Fasting Blood Sugar:</span>
                 <div>
                   <input
                     type="text"
@@ -178,7 +172,7 @@ const EditDiagnosis: React.FC = () => {
                 </div>
               </div>
               <div>
-                <span className="mb-2">Urine Sugar:</span>
+                <span className="mb-6">Urine Sugar:</span>
                 <div>
                   <input
                     type="text"
@@ -192,7 +186,7 @@ const EditDiagnosis: React.FC = () => {
                 </div>
               </div>
               <div>
-                <span className="mb-2">Blood Pressure:</span>
+                <span className="mb-6">Blood Pressure:</span>
                 <div>
                   <input
                     type="text"
@@ -206,7 +200,7 @@ const EditDiagnosis: React.FC = () => {
                 </div>
               </div>
               <div>
-                <span className="mb-2">Diabetes:</span>
+                <span className="mb-6">Diabetes:</span>
                 <div>
                   <input
                     type="text"
@@ -220,7 +214,7 @@ const EditDiagnosis: React.FC = () => {
                 </div>
               </div>
               <div>
-                <span className="mb-2">Cholesterol:</span>
+                <span className="mb-6">Cholesterol:</span>
                 <div>
                   <input
                     type="text"
@@ -251,7 +245,7 @@ const EditDiagnosis: React.FC = () => {
               <span> Diagnosis Property Value</span>
             </div>
             <div>
-              <button className="px-4 py-2 h-10 bg-purple-700 text-white rounded-lg mr-3">
+              <button className="px-4 h-10 bg-purple-700 text-white rounded-lg mr-3">
                 Add
               </button>
             </div>
@@ -273,4 +267,4 @@ const EditDiagnosis: React.FC = () => {
   );
 };
 
-export default EditDiagnosis;
+export default NewPatientDiagnosis;

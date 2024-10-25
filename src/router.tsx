@@ -8,15 +8,14 @@ import Appointment from "./pages/doctor/appointment";
 import Patient from "./pages/doctor/patient";
 import Transactions from "./pages/doctor/transactions";
 import DoctorReports from "./pages/doctor/reports";
-
 import Diagnosis from "./pages/Diagnosis";
-
 import SchedulePage from "./pages/doctor/Schedule";
 import DoctorDashboard from "./pages/doctor/DoctorDashboard";
 import Login from "./pages/general/Login";
 import Signup from "./pages/general/Signup";
 import ForgotPassword from "./pages/general/ForgotPassord";
 import EditDiagnosis from "./pages/doctor/diagnosis/EditDiagnosis";
+import NewPatientDiagnosis from "./pages/doctor/diagnosis/NewPatientDiagnosis";
 
 // pages
 
@@ -79,13 +78,14 @@ const routes = createBrowserRouter([
       {
         path: "diagnosis",
         element: <Diagnosis />,
-        // element: <EditDiagnosis />,
-        children: [
-          {
-            path: "edit-diagnosis/:id", // nested route
-            element: <EditDiagnosis />,
-          },
-        ],
+      },
+      {
+        path: "edit-diagnosis/:id", // nested route
+        element: <EditDiagnosis />,
+      },
+      {
+        path: 'new-diagnosis',
+        element: <NewPatientDiagnosis />
       },
 
       { path: "Schedule", element: <SchedulePage /> },

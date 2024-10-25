@@ -65,10 +65,12 @@ export default function DoctorLayout() {
               {isSidebarOpen && <span>Departments</span>}
             </li>
 
-            <li className="flex items-center p-2 hover:bg-purple-600 rounded-md cursor-pointer">
-              <FaDiagnoses className="mr-3 text-lg" />
-              {isSidebarOpen && <span>Diagnosis</span>}
-            </li>
+            <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/diagnosis">
+              <FaHospital
+                className={`${isSidebarOpen ? "md:mr-3" : ""} text-lg`}
+              />
+              {isSidebarOpen && <span>Diagnosis</span>} 
+            </NavLinks>
 
             <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/transactions">
               <FaHospital

@@ -16,6 +16,7 @@ import DoctorDashboard from "./pages/doctor/DoctorDashboard";
 import Login from "./pages/general/Login";
 import Signup from "./pages/general/Signup";
 import ForgotPassword from "./pages/general/ForgotPassord";
+import EditDiagnosis from "./pages/doctor/diagnosis/EditDiagnosis";
 
 // pages
 
@@ -78,6 +79,13 @@ const routes = createBrowserRouter([
       {
         path: "diagnosis",
         element: <Diagnosis />,
+        // element: <EditDiagnosis />,
+        children: [
+          {
+            path: "edit-diagnosis/:id", // nested route
+            element: <EditDiagnosis />,
+          },
+        ],
       },
 
       { path: "Schedule", element: <SchedulePage /> },

@@ -1,38 +1,19 @@
 import { useState } from "react";
+import { Outlet } from "react-router-dom";
 import {
   FaBars,
-  FaBell,
-  FaClipboardList,
-  FaHome,
-  FaHospital,
-  FaTasks,
   FaTimes,
+  FaHome,
   FaUserMd,
+  FaClipboardList,
+  FaHospital,
+  FaBell,
+  FaDiagnoses,
+  FaTasks,
 } from "react-icons/fa";
-import { Outlet } from "react-router-dom";
-<<<<<<< HEAD
-import { useState } from 'react';
-import { FaBars, FaTimes, FaHome, FaUserMd, FaClipboardList, FaHospital, FaBell,FaDiagnoses  } from 'react-icons/fa';
-
-=======
 import NavLinks from "./NavLink";
->>>>>>> 09f25cb8194530d27b63debf322eaab7100d3af8
 
 export default function DoctorLayout() {
-  // return (
-  //   <main className="h-screen w-screen flex">
-  //     <aside className="w-56 h-full"></aside>
-  //     <aside className="flex-1 flex flex-col h-full">
-  //       <header className="h-16 flex items-center px-4">
-  //         <h1 className="text-xl font-bold"></h1>
-  //       </header>
-  //       <section className="flex-1 p-6 bg-_gray-200">
-  //         <Outlet />
-  //       </section>
-  //     </aside>
-  //   </main>
-  // );
-
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const toggleSidebar = () => {
@@ -59,56 +40,50 @@ export default function DoctorLayout() {
           </button>
         </div>
         <nav className="flex-1">
-          <div>
-
+          <ul>
             <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/dashboard">
-              <FaHome
-                className={`${isSidebarOpen ? "md:mr-3 " : ""} text-lg`}
-              />
+              <FaHome className={`${isSidebarOpen ? "md:mr-3" : ""} text-lg`} />
               {isSidebarOpen && <span>Dashboard</span>}
             </NavLinks>
 
             <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/patients">
               <FaUserMd
-                className={`${isSidebarOpen ? "md:mr-3 " : ""} text-lg`}
+                className={`${isSidebarOpen ? "md:mr-3" : ""} text-lg`}
               />
               {isSidebarOpen && <span>Patients</span>}
             </NavLinks>
 
             <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/appointments">
               <FaClipboardList
-                className={`${isSidebarOpen ? "md:mr-3 " : ""} text-lg`}
+                className={`${isSidebarOpen ? "md:mr-3" : ""} text-lg`}
               />
               {isSidebarOpen && <span>Appointments</span>}
-<<<<<<< HEAD
-            </li>
+            </NavLinks>
+
             <li className="flex items-center p-2 hover:bg-purple-600 rounded-md cursor-pointer">
               <FaHospital className="mr-3 text-lg" />
               {isSidebarOpen && <span>Departments</span>}
             </li>
+
             <li className="flex items-center p-2 hover:bg-purple-600 rounded-md cursor-pointer">
               <FaDiagnoses className="mr-3 text-lg" />
               {isSidebarOpen && <span>Diagnosis</span>}
             </li>
-          </ul>
-=======
-            </NavLinks>
 
             <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/transactions">
               <FaHospital
-                className={`${isSidebarOpen ? "md:mr-3 " : ""} text-lg`}
+                className={`${isSidebarOpen ? "md:mr-3" : ""} text-lg`}
               />
               {isSidebarOpen && <span>Transactions</span>}
             </NavLinks>
 
             <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/schedule">
               <FaTasks
-                className={`${isSidebarOpen ? "md:mr-3 " : ""} text-lg`}
+                className={`${isSidebarOpen ? "md:mr-3" : ""} text-lg`}
               />
               {isSidebarOpen && <span>Schedules</span>}
             </NavLinks>
-          </div>
->>>>>>> 09f25cb8194530d27b63debf322eaab7100d3af8
+          </ul>
         </nav>
       </div>
 
@@ -120,9 +95,7 @@ export default function DoctorLayout() {
       >
         {/* Header */}
         <header className="bg-white shadow-md p-4 py-2 md:py-3 flex justify-between items-center">
-          {/* <h1 className="text-xl font-semibold">Hospital Management Dashboard</h1> */}
-
-          <img src="/logo.png" alt="" className="w-10" />
+          <img src="/logo.png" alt="Logo" className="w-10" />
           <div className="flex items-center">
             <FaBell className="text-gray-600 text-2xl mr-6 cursor-pointer" />
             <div className="flex items-center">

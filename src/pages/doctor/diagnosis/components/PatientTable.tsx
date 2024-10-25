@@ -1,7 +1,24 @@
 import React from "react";
-import diagnosisData from "@/utils/diagnosis";
 import { FaEdit, FaPrint, FaTrash } from "react-icons/fa";
-const Patientlist = () => {
+
+interface Patient {
+  id: number;
+  reportNum: string;
+  patientName: string;
+  patientEmail: string;
+  doctorName: string;
+  doctorEmail: string;
+  diagCategory: string;
+  createdOn: string;
+  profileImg: string;
+}
+
+interface PatientsTableProps {
+  patients: Patient[]; // Correctly define the type for the patients
+  onEditClick: (id: number) => void;
+}
+
+const Patientlist: React.FC<PatientsTableProps> = ({ patients, onEditClick }) => {
   return (
     <div className="" style={{ overflowX: "auto" }}>
       <table className="w-full ">
@@ -20,25 +37,23 @@ const Patientlist = () => {
               <div className="">DIAGNOSIS CATEGORY</div>
             </th>
             <th className="font-semibold">
-              <div className="">CREATED ON </div>
+              <div className="">CREATED ON</div>
             </th>
             <th className="font-semibold">
               <div className="">ACTION</div>
             </th>
           </tr>
         </thead>
-        <tbody className="w-full p-3  ">
-          {diagnosisData.map((items) => (
+        <tbody className="w-full p-3">
+          {patients.map((items) => (
             <tr
-              className="px bg-white mt-10 w-full  border"
+              className="px bg-white mt-10 w-full border"
               style={{ marginTop: "20px" }}
+              key={items.id}
             >
-              <td className=" p-6 ">
+              <td className="p-6">
                 <div>
-                  <a
-                    href=""
-                    className="text-sm px-2 py-2 bg-blue-300  rounded-md"
-                  >
+                  <a href="" className="text-sm px-2 py-2 bg-blue-300 rounded-md">
                     {items.reportNum}
                   </a>
                 </div>
@@ -62,25 +77,28 @@ const Patientlist = () => {
                 </div>
               </td>
               <td>
-                <div className="">
+                <div>
                   <p className="text-sm" style={{ width: "180px" }}>
                     {items.diagCategory}
                   </p>
                 </div>
               </td>
               <td>
-                <div className="">
-                  <span className="text-sm px-2 py-2 bg-blue-300  rounded-md">
+                <div>
+                  <span className="text-sm px-2 py-2 bg-blue-300 rounded-md">
                     {items.createdOn}
                   </span>
                 </div>
               </td>
               <td>
-                <div className="flex items-center gap-2 ">
+                <div className="flex items-center gap-2">
                   <span className="text-yellow-500 cursor-pointer">
                     <FaPrint />
                   </span>
-                  <span className="text-purple-500 cursor-pointer">
+                  <span
+                    className="text-purple-500 cursor-pointer"
+                    onClick={() => onEditClick(items.id)} // Use items.id for the onClick handler
+                  >
                     <FaEdit />
                   </span>
                   <span className="text-destructive cursor-pointer">

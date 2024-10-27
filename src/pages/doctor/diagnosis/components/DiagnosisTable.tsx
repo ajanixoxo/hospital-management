@@ -1,5 +1,5 @@
-import NavLinks from "@/components/layout/NavLink";
-import React from "react";
+
+import React, { useState } from "react";
 import { FaEdit, FaPrint, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -16,16 +16,19 @@ interface Patient {
 }
 
 interface PatientsTableProps {
-  patients: Patient[]; // Correctly define the type for the patients
-  onEditClick: (id: number) => void;
+  patientData: Patient[];
 }
 
-const Patientlist: React.FC<PatientsTableProps> = ({
-  patients,
-  onEditClick,
-}) => {
+const DiagnosisTable: React.FC<PatientsTableProps> = ({ patientData }) => {
+  const [patients, setPatients] = useState(patientData);
+  // deleting patient diagnosis
+  const handleDeletePatientDiagnosis = (id: number) => {
+    // Delete patient diagnosis logic here
+    const updatedPatient = patients.filter((patient) => patient.id !== id);
+    setPatients(updatedPatient);
+  };
   return (
-    <div className="" style={{ overflowX: "auto" }}>
+    <div className="w-full" style={{ overflowX: "auto" }}>
       <table className="w-full ">
         <thead className="bg-slate-200 py-10 h-12 ">
           <tr>
@@ -108,17 +111,26 @@ const Patientlist: React.FC<PatientsTableProps> = ({
                       <FaEdit />
                     </Link>
                   </span>
-                  <span className="text-destructive cursor-pointer">
+                  <span
+                    className="text-destructive cursor-pointer"
+                    onClick={() => handleDeletePatientDiagnosis(items.id)}
+                  >
                     <FaTrash />
                   </span>
                 </div>
               </td>
             </tr>
           ))}
+          {patients.length === 0 && (
+            <h3 className="font-bold text-2xl text-center mt-4">
+              {" "}
+              No patient diagnosis{" "}
+            </h3>
+          )}
         </tbody>
       </table>
     </div>
   );
 };
 
-export default Patientlist;
+export default DiagnosisTable;

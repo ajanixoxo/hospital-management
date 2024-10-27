@@ -8,7 +8,7 @@ import {
   FaClipboardList,
   FaHospital,
   FaBell,
-  FaDiagnoses,
+
   FaTasks,
 } from "react-icons/fa";
 import NavLinks from "./NavLink";

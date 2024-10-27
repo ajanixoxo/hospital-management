@@ -1,5 +1,6 @@
 
 import React, { useState } from "react";
+// import diagnosisData from "@/utils/diagnosis";
 import { FaEdit, FaPrint, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 

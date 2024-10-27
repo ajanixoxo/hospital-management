@@ -1,4 +1,3 @@
-
 import { FaSearch } from "react-icons/fa";
 import DiagnosisTable from "./doctor/diagnosis/components/DiagnosisTable";
 

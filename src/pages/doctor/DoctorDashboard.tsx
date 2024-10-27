@@ -1,7 +1,13 @@
+import DoctorDashboardCards from "@/components/doctor/DoctorDashboardCards"
+
 
 const DoctorDashboard = () => {
   return (
-    <div>DoctorDashboard</div>
+    <div className="p-4">
+      
+
+      <DoctorDashboardCards/>
+    </div>
   )
 }
  

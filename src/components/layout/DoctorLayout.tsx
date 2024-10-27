@@ -14,6 +14,7 @@ import {
 } from "react-icons/fa";
 
 import NavLinks from "./NavLink";
+import { FaBook } from "react-icons/fa6";
 
 export default function DoctorLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -61,15 +62,16 @@ export default function DoctorLayout() {
               />
               {isSidebarOpen && <span>Appointments</span>}
             </NavLinks>
-
+{/* 
             <li className="flex items-center p-2 hover:bg-purple-600 rounded-md cursor-pointer">
               <FaHospital className="mr-3 text-lg" />
               {isSidebarOpen && <span>Departments</span>}
-            </li>
+            </li> */}
+
 
             <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/diagnosis">
-              <FaHospital
-                className={`${isSidebarOpen ? "md:mr-3" : ""} text-lg`}
+              <FaDiagnoses
+                className={`${isSidebarOpen ? "md:mr-3 " : ""} text-lg`}
               />
               {isSidebarOpen && <span>Diagnosis</span>}
             </NavLinks>
@@ -81,6 +83,14 @@ export default function DoctorLayout() {
               {isSidebarOpen && <span>Transactions</span>}
             </NavLinks>
 
+            
+            <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/reports">
+              <FaBook
+                className={`${isSidebarOpen ? "md:mr-3 " : ""} text-lg`}
+              />
+              {isSidebarOpen && <span>Reports</span>}
+            </NavLinks>
+
             <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/schedule">
               <FaTasks
                 className={`${isSidebarOpen ? "md:mr-3" : ""} text-lg`}
@@ -88,12 +98,7 @@ export default function DoctorLayout() {
               {isSidebarOpen && <span>Schedules</span>}
             </NavLinks>
 
-            <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/diagnosis">
-              <FaDiagnoses
-                className={`${isSidebarOpen ? "md:mr-3 " : ""} text-lg`}
-              />
-              {isSidebarOpen && <span>Diagnosis</span>}
-            </NavLinks>
+
           </ul>
         </nav>
       </div>

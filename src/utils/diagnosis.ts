@@ -1,4 +1,6 @@
-const patientData = [
+import Patient from "@/pages/doctor/patient";
+
+const PatientDataList = [
   {
     id: 1,
     reportNum: "RPT-001",
@@ -22,4 +24,4 @@ const patientData = [
     profileImg: "https://via.placeholder.com/150",
   },
 ];
-export default patientData
+export default PatientDataList

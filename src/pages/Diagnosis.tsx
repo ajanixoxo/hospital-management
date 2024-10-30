@@ -5,13 +5,16 @@ import DiagnosisTable from "./doctor/diagnosis/components/DiagnosisTable";
 import { Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
 import patientData from "@/utils/diagnosis";
+import { useState } from "react";
 const Diagnosis: React.FC = () => {
+const [searchQuery, setSearchQuery] = useState('')
 
-
-  // const handleEdit = (id: number) => {
-  //   // Navigate to the edit page for the selected patient
-  //   navigate(`doctor/edit-diagnosis/${id}`);
-  // };
+const handleSearchDiagnosis = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  setSearchQuery(e.target.value)
+}
+const filterDiagnosis = patientData.filter((option) =>
+  option.patientName.toLowerCase().includes(searchQuery.toLowerCase())
+);
 
   return (
     <div className="w-full p-5">
@@ -24,6 +27,8 @@ const Diagnosis: React.FC = () => {
             type="text"
             className="px-8 py-2 rounded-sm border border-black"
             style={{ width: "300px" }}
+            placeholder="Search"
+            onChange={handleSearchDiagnosis}
           />
         </div>
         <button
@@ -36,7 +41,7 @@ const Diagnosis: React.FC = () => {
       <div className="patient-list w-full mt-7">
         <div>
           {/* Pass both patients data and onEditClick handler */}
-          <DiagnosisTable patientData={patientData} />
+          <DiagnosisTable  patientData={searchQuery ? filterDiagnosis : patientData} />
         </div>
       </div>
       <Outlet />

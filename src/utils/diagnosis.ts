@@ -1,4 +1,3 @@
-import Patient from "@/pages/doctor/patient";
 
 const PatientDataList = [
   {

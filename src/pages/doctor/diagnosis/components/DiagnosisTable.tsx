@@ -20,10 +20,10 @@ interface PatientsTableProps {
 
 const DiagnosisTable: React.FC<PatientsTableProps> = ({ patientData }) => {
   // deleting patient diagnosis
-  const handleDeletePatientDiagnosis = (id: number) => {
-    const updatedPatient = patientData.filter((patient) => patient.id !== id);
+  // const handleDeletePatientDiagnosis = (id: number) => {
+  //   const updatedPatient = patientData.filter((patient) => patient.id !== id);
 
-  };
+  // };
 
   return (
     <div className="w-full" style={{ overflowX: "auto" }}>
@@ -86,7 +86,7 @@ const DiagnosisTable: React.FC<PatientsTableProps> = ({ patientData }) => {
                     </span>
                     <span
                       className="text-destructive cursor-pointer"
-                      onClick={() => handleDeletePatientDiagnosis(items.id)}
+                      // onClick={() => handleDeletePatientDiagnosis(items.id)}
                     >
                       <FaTrash />
                     </span>

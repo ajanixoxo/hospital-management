@@ -4,7 +4,7 @@ const PatientDataList = [
   {
     id: 1,
     reportNum: "RPT-001",
-    patientName: "John Doe",
+    patientName: "Mike",
     patientEmail: "john@example.com",
     doctorName: "Dr. Smith",
     doctorEmail: "drsmith@example.com",

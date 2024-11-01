@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import EditInputDropDown from "./components/EditInputDropDown";
 import { useState } from "react";
 import PatientDataList from "@/utils/diagnosis";
-import { FaBullseye } from "react-icons/fa6";
+
 import { FaTrash } from "react-icons/fa";
 interface DiagnosisProperty {
   name: string;

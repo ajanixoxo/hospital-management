@@ -2,6 +2,12 @@ import { Link } from "react-router-dom";
 import EditInputDropDown from "./components/EditInputDropDown";
 import { useState } from "react";
 import PatientDataList from "@/utils/diagnosis";
+import { FaBullseye } from "react-icons/fa6";
+import { FaTrash } from "react-icons/fa";
+interface DiagnosisProperty {
+  name: string;
+  value: string;
+}
 const NewPatientDiagnosis = () => {
   const names = ["John Doe", "Jane Smith", "Alice Johnson", "Bob Brown"];
   const DiagnosisCategory = [
@@ -46,7 +52,26 @@ const NewPatientDiagnosis = () => {
     cholesterol: "",
   });
   const [patientData, setPatientData] = useState(PatientDataList);
-
+  const [diagnosisProperTy, setDiagnosisPropery] = useState<
+    DiagnosisProperty[]
+  >([]);
+  const AddOtherDiagnosis = () => {
+    setDiagnosisPropery([...diagnosisProperTy, { name: "", value: "" }]);
+  };
+  const handleAddOtherDiagnosisChanges = (
+    index: number,
+    field: keyof DiagnosisProperty,
+    value: string
+  ) => {
+    const updatedProperties = [...diagnosisProperTy];
+    updatedProperties[index][field] = value;
+    setDiagnosisPropery(updatedProperties);
+  };
+  // DELETING OTHER DIAGNOSIS 
+  const deleteDiagnosisProperty = (index: number) => {
+    const updatedProperties = diagnosisProperTy.filter((_, i) => i !== index);
+    setDiagnosisPropery(updatedProperties);
+  };
   // Handling changes for each form field
   const handleChanges = (field: keyof typeof formValue, value: string) => {
     setFormValue((prev) => ({
@@ -67,8 +92,8 @@ const NewPatientDiagnosis = () => {
       createdOn: new Date().toISOString().split("T")[0],
       profileImg: "https://via.placeholder.com/150",
     };
-        setPatientData((prevData) => [...prevData, newPatient])
-    console.log(patientData)
+    setPatientData((prevData) => [...prevData, newPatient]);
+    console.log(patientData);
   };
 
   return (
@@ -221,7 +246,43 @@ const NewPatientDiagnosis = () => {
           </div>
           {/* Repeat for other fields as needed */}
         </div>
+        <div className="mt-3 ml-2 ">
+          <h3 className="font-semibold">Add other diagnosis property</h3>
+          <div className="flex items-center justify-around p-4 bg-slate-200 rounded-md">
+            <h3>#</h3>
+            <h3>Diagnosis Property Name</h3>
+            <h3>Diagnosis Property Value</h3>
+            <button
+              className="bg-purple-700 px-3 py-1 rounded-sm text-white"
+              onClick={AddOtherDiagnosis}
+            >
+              Add
+            </button>
+          </div>
 
+          {diagnosisProperTy.map((property, index) => (
+            <div key={index} className="flex items-center justify-around p-4 bg-white rounded-md shadow shadow-slate-200">
+              <h3>{index + 1}</h3>
+              <input
+                type="text"
+                placeholder="Diagnosis Property Name"
+                className="border px-3 w-64 py-2 rounded-sm outline-none"
+                value={property.name}
+                onChange={(e) => handleAddOtherDiagnosisChanges(index, 'name', e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Diagnosis Property Value "
+                className="border px-3 w-64 py-2 rounded-sm outline-none"
+                value={property.value}
+                onChange={(e) => handleAddOtherDiagnosisChanges(index, 'value', e.target.value)}
+              />
+              <span className="text-destructive cursor-pointer" onClick={()=> deleteDiagnosisProperty(index)}>
+                <FaTrash />
+              </span>
+            </div>
+          ))}
+        </div>
         <div className="bottom-btn mt-6 ">
           <button
             className="px-8 py-2 h-10 bg-purple-700 text-white rounded-lg mr-3"

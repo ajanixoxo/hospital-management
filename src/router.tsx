@@ -12,6 +12,7 @@ import SchedulePage from "./pages/doctor/Schedule";
 import ProfilePage from "./pages/doctor/settings/ProfilePage";
 import EditProfilePage from "./pages/doctor/settings/EditProfilePage";
 import ChangePassword from "./pages/doctor/settings/ChangePassword";
+import Settings from "./pages/doctor/settings/Settings";
 
 // pages
 
@@ -61,7 +62,12 @@ const routes = createBrowserRouter([
       },
       {
        path:"settings",
+      
        children: [
+        {
+          index: true,
+          element: <Settings />,
+        },
         {
           path: "profile-page",
           element: <ProfilePage />,

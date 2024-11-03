@@ -13,6 +13,7 @@ import SchedulePage from "./pages/doctor/Schedule";
 import ProfilePage from "./pages/doctor/settings/ProfilePage";
 import EditProfilePage from "./pages/doctor/settings/EditProfilePage";
 import ChangePassword from "./pages/doctor/settings/ChangePassword";
+import Settings from "./pages/doctor/settings/Settings";
 import DoctorDashboard from "./pages/doctor/DoctorDashboard";
 import Login from "./pages/general/Login";
 import Signup from "./pages/general/Signup";
@@ -84,7 +85,12 @@ const routes = createBrowserRouter([
       },
       {
        path:"settings",
+      
        children: [
+        {
+          index: true,
+          element: <Settings />,
+        },
         {
           path: "profile-page",
           element: <ProfilePage />,

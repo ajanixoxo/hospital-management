@@ -1,24 +1,12 @@
 import { Outlet, Link } from "react-router-dom";
 import { useState } from 'react';
-import { FaBars, FaTimes, FaHome, FaUserMd, FaClipboardList, FaHospital, FaBell, FaTasks, FaUser, FaLock, FaGlobe} from 'react-icons/fa';
+import { FaBars, FaTimes, FaHome, FaUserMd, FaClipboardList, FaHospital, FaBell, FaTasks, FaDiagnoses, FaUser, FaLock, FaGlobe} from 'react-icons/fa';
 import { FaGear } from "react-icons/fa6";
 import { CiLogout } from "react-icons/ci";
+import NavLinks from "./NavLink";
+import { FaBook } from "react-icons/fa6";
 
 export default function DoctorLayout() {
-  // return (
-  //   <main className="h-screen w-screen flex">
-  //     <aside className="w-56 h-full"></aside>
-  //     <aside className="flex-1 flex flex-col h-full">
-  //       <header className="h-16 flex items-center px-4">
-  //         <h1 className="text-xl font-bold"></h1>
-  //       </header>
-  //       <section className="flex-1 p-6 bg-_gray-200">
-  //         <Outlet />
-  //       </section>
-  //     </aside>
-  //   </main>
-  // );
-
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false)
 
@@ -55,30 +43,67 @@ export default function DoctorLayout() {
         </div>
         <nav className="flex-1">
           <ul>
-            <li className="flex items-center p-2 hover:bg-purple-600 rounded-md cursor-pointer">
-              <FaHome className="mr-3 text-lg" />
+            <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/dashboard">
+              <FaHome className={`${isSidebarOpen ? "md:mr-3" : ""} text-lg`} />
               {isSidebarOpen && <span>Dashboard</span>}
-            </li>
-            <li className="flex items-center p-2 hover:bg-purple-600 rounded-md cursor-pointer">
-              <FaUserMd className="mr-3 text-lg" />
-              {isSidebarOpen && <span>Doctors</span>}
-            </li>
-            <li className="flex items-center p-2 hover:bg-purple-600 rounded-md cursor-pointer">
-              <FaClipboardList className="mr-3 text-lg" />
+            </NavLinks>
+
+            <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/patients">
+              <FaUserMd
+                className={`${isSidebarOpen ? "md:mr-3" : ""} text-lg`}
+              />
+              {isSidebarOpen && <span>Patients</span>}
+            </NavLinks>
+
+            <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/appointments">
+              <FaClipboardList
+                className={`${isSidebarOpen ? "md:mr-3" : ""} text-lg`}
+              />
               {isSidebarOpen && <span>Appointments</span>}
-            </li>
+            </NavLinks>
+{/* 
             <li className="flex items-center p-2 hover:bg-purple-600 rounded-md cursor-pointer">
               <FaHospital className="mr-3 text-lg" />
               {isSidebarOpen && <span>Departments</span>}
-            </li>
-            <li className="flex items-center p-2 hover:bg-purple-600 rounded-md cursor-pointer">
-              <Link to={"/doctor/schedule"} className="flex items-center"> <FaTasks className="mr-3 text-lg" />
-                {isSidebarOpen && <span>Schedules</span>}</Link>
-            </li>
-            <li className="flex items-center p-2 hover:bg-purple-600 rounded-md cursor-pointer">
-              <Link to={"/doctor/settings"} className="flex items-center"> <FaGear className="mr-3 text-lg" />
-                {isSidebarOpen && <span>Settings</span>}</Link>
-            </li>
+            </li> */}
+
+
+            <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/diagnosis">
+              <FaDiagnoses
+                className={`${isSidebarOpen ? "md:mr-3 " : ""} text-lg`}
+              />
+              {isSidebarOpen && <span>Diagnosis</span>}
+            </NavLinks>
+
+            <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/transactions">
+              <FaHospital
+                className={`${isSidebarOpen ? "md:mr-3" : ""} text-lg`}
+              />
+              {isSidebarOpen && <span>Transactions</span>}
+            </NavLinks>
+
+            
+            <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/reports">
+              <FaBook
+                className={`${isSidebarOpen ? "md:mr-3 " : ""} text-lg`}
+              />
+              {isSidebarOpen && <span>Reports</span>}
+            </NavLinks>
+
+            <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/schedule">
+              <FaTasks
+                className={`${isSidebarOpen ? "md:mr-3" : ""} text-lg`}
+              />
+              {isSidebarOpen && <span>Schedules</span>}
+            </NavLinks>
+            
+                 <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/settings">
+              <FaGear
+                className={`${isSidebarOpen ? "md:mr-3" : ""} text-lg`}
+              />
+              {isSidebarOpen && <span>Settings</span>}
+            </NavLinks>
+           
           </ul>
         </nav>
       </div>
@@ -89,8 +114,8 @@ export default function DoctorLayout() {
           }`}
       >
         {/* Header */}
-        <header className="bg-white shadow-md p-4 flex justify-between items-center">
-          <h1 className="text-xl font-semibold">Hospital Management Dashboard</h1>
+        <header className="bg-white shadow-md p-4 py-2 md:py-3 flex justify-between items-center">
+          <img src="/logo.png" alt="Logo" className="w-10" />
           <div className="flex items-center">
             <FaBell className="text-gray-600 text-2xl mr-6 cursor-pointer" />
             <div className="flex items-center relative">
@@ -139,7 +164,6 @@ export default function DoctorLayout() {
   </div>
  )}
             
-             
             </div>
           </div>
         </header>

@@ -1,8 +1,9 @@
-const patientData = [
+
+const PatientDataList = [
   {
     id: 1,
     reportNum: "RPT-001",
-    patientName: "John Doe",
+    patientName: "Mike",
     patientEmail: "john@example.com",
     doctorName: "Dr. Smith",
     doctorEmail: "drsmith@example.com",
@@ -22,4 +23,4 @@ const patientData = [
     profileImg: "https://via.placeholder.com/150",
   },
 ];
-export default patientData
+export default PatientDataList

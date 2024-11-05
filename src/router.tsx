@@ -10,6 +10,9 @@ import Transactions from "./pages/doctor/transactions";
 import DoctorReports from "./pages/doctor/reports";
 import Diagnosis from "./pages/doctor/diagnosis/Diagnosis";
 import SchedulePage from "./pages/doctor/Schedule";
+import ProfilePage from "./pages/doctor/settings/ProfilePage";
+import EditProfilePage from "./pages/doctor/settings/EditProfilePage";
+import ChangePassword from "./pages/doctor/settings/ChangePassword";
 import DoctorDashboard from "./pages/doctor/DoctorDashboard";
 import Login from "./pages/general/Login";
 import Signup from "./pages/general/Signup";
@@ -77,6 +80,27 @@ const routes = createBrowserRouter([
         element: <DoctorReports />,
       },
       {
+        path: "schedule",
+        element: <SchedulePage />,
+      },
+      {
+       path:"settings",
+       children: [
+        {
+          path: "profile-page",
+          element: <ProfilePage />,
+        },
+        {
+          path: "edit-profile",
+          element: <EditProfilePage />,
+        },
+        {
+          path: "change-password",
+          element: <ChangePassword />,
+        },
+       ]
+      },
+      {
         path: "diagnosis",
         element: <Diagnosis />,
       },
@@ -88,12 +112,14 @@ const routes = createBrowserRouter([
         path: 'new-diagnosis',
         element: <NewPatientDiagnosis />
       },
+
       {
         path: 'diagnosis-category',
         element: <DiagnosisCategory /> 
       },
 
       { path: "Schedule", element: <SchedulePage /> },
+
     ],
   },
   {

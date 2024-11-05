@@ -1,5 +1,6 @@
+import { Outlet, Link } from "react-router-dom";
+import DP from "/pfp.jpg";
 import { useState } from "react";
-import { Outlet } from "react-router-dom";
 import {
   FaBars,
   FaTimes,
@@ -8,10 +9,12 @@ import {
   FaClipboardList,
   FaHospital,
   FaBell,
-
+  FaDiagnoses,
   FaTasks,
 } from "react-icons/fa";
+
 import NavLinks from "./NavLink";
+import { FaBook } from "react-icons/fa6";
 
 export default function DoctorLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -21,7 +24,7 @@ export default function DoctorLayout() {
   };
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen ">
       {/* Sidebar */}
       <div
         className={`bg-white text-black p-4 transition-all duration-300 shadow ${
@@ -59,17 +62,18 @@ export default function DoctorLayout() {
               />
               {isSidebarOpen && <span>Appointments</span>}
             </NavLinks>
-
+{/* 
             <li className="flex items-center p-2 hover:bg-purple-600 rounded-md cursor-pointer">
               <FaHospital className="mr-3 text-lg" />
               {isSidebarOpen && <span>Departments</span>}
-            </li>
+            </li> */}
+
 
             <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/diagnosis">
-              <FaHospital
-                className={`${isSidebarOpen ? "md:mr-3" : ""} text-lg`}
+              <FaDiagnoses
+                className={`${isSidebarOpen ? "md:mr-3 " : ""} text-lg`}
               />
-              {isSidebarOpen && <span>Diagnosis</span>} 
+              {isSidebarOpen && <span>Diagnosis</span>}
             </NavLinks>
 
             <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/transactions">
@@ -79,12 +83,22 @@ export default function DoctorLayout() {
               {isSidebarOpen && <span>Transactions</span>}
             </NavLinks>
 
+            
+            <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/reports">
+              <FaBook
+                className={`${isSidebarOpen ? "md:mr-3 " : ""} text-lg`}
+              />
+              {isSidebarOpen && <span>Reports</span>}
+            </NavLinks>
+
             <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/schedule">
               <FaTasks
                 className={`${isSidebarOpen ? "md:mr-3" : ""} text-lg`}
               />
               {isSidebarOpen && <span>Schedules</span>}
             </NavLinks>
+
+
           </ul>
         </nav>
       </div>
@@ -101,11 +115,13 @@ export default function DoctorLayout() {
           <div className="flex items-center">
             <FaBell className="text-gray-600 text-2xl mr-6 cursor-pointer" />
             <div className="flex items-center">
-              <img
-                src="https://via.placeholder.com/40"
-                alt="Profile"
-                className="rounded-full w-10 h-10 mr-2"
-              />
+              <Link to="settings/profile-page">
+                <img
+                  src={DP}
+                  alt="Profile"
+                  className="rounded-full w-8 object-cover h-8 mr-2"
+                />
+              </Link>
               <span className="text-gray-700 font-medium">Dr. John Doe</span>
             </div>
           </div>

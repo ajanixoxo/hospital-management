@@ -26,7 +26,7 @@ export default function DoctorLayout() {
       <div
         className={`bg-white text-black p-4 transition-all duration-300 shadow ${
           isSidebarOpen ? "w-64" : "w-16"
-        } flex flex-col fixed h-full overflow-y-auto`}
+        } flex flex-col fixed overflow-y-auto`}
       >
         <div className="flex justify-between items-center mb-8 mt-2">
           <span className="text-2xl font-semibold">
@@ -91,7 +91,7 @@ export default function DoctorLayout() {
 
       {/* Main Content */}
       <div
-        className={`flex-1 bg-gray-100 transition-all duration-300 ${
+        className={`flex-1 overflow-auto bg-gray-100 transition-all duration-300 ${
           isSidebarOpen ? "ml-64" : "ml-16"
         }`}
       >

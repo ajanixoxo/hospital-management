@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaEdit, FaPrint, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+import ConfirmDeleteModal from "./DeleteComfirmModal";
 interface Patient {
   id: number;
   reportNum: string;
@@ -20,10 +20,33 @@ interface PatientsTableProps {
 
 const DiagnosisTable: React.FC<PatientsTableProps> = ({ patientData }) => {
   // deleting patient diagnosis
-  // const handleDeletePatientDiagnosis = (id: number) => {
-  //   const updatedPatient = patientData.filter((patient) => patient.id !== id);
+  const [data, setData] = useState(patientData); // Initial patient data
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPatientId, setSelectedPatientId] = useState<number | null>(
+    null
+  );
 
-  // };
+  const handleDeletePatientDiagnosis = (id: number) => {
+    const updatedPatient = data.filter((patient) => patient.id !== id);
+    setData(updatedPatient);
+    closeModal();
+  };
+
+  const openModal = (id: number) => {
+    setSelectedPatientId(id);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedPatientId(null);
+    setIsModalOpen(false);
+  };
+
+  const confirmDelete = () => {
+    if (selectedPatientId !== null) {
+      handleDeletePatientDiagnosis(selectedPatientId);
+    }
+  };
 
   return (
     <div className="w-full" style={{ overflowX: "auto" }}>
@@ -39,14 +62,14 @@ const DiagnosisTable: React.FC<PatientsTableProps> = ({ patientData }) => {
           </tr>
         </thead>
         <tbody className="w-full p-3">
-          {patientData.length > 0 ? (
-            patientData.map((items) => (
-              <tr
-                className="px bg-white mt-10 w-full border"
-                key={items.id}
-              >
+          {data.length > 0 ? (
+            data.map((items) => (
+              <tr className="px bg-white mt-10 w-full border" key={items.id}>
                 <td className="p-6">
-                  <a href="" className="text-sm px-2 py-2 bg-blue-300 rounded-md">
+                  <a
+                    href=""
+                    className="text-sm px-2 py-2 bg-blue-300 rounded-md"
+                  >
                     {items.reportNum}
                   </a>
                 </td>
@@ -54,7 +77,9 @@ const DiagnosisTable: React.FC<PatientsTableProps> = ({ patientData }) => {
                   <div className="flex items-center gap-2">
                     <img src={items.profileImg} alt="" className="w-11" />
                     <div>
-                      <span className="text-purple-500">{items.patientName}</span>
+                      <span className="text-purple-500">
+                        {items.patientName}
+                      </span>
                       <p className="text-sm">{items.patientEmail}</p>
                     </div>
                   </div>
@@ -63,7 +88,9 @@ const DiagnosisTable: React.FC<PatientsTableProps> = ({ patientData }) => {
                   <div className="flex items-center gap-2">
                     <img src={items.profileImg} alt="" className="w-11" />
                     <div>
-                      <span className="text-purple-500">{items.doctorName}</span>
+                      <span className="text-purple-500">
+                        {items.doctorName}
+                      </span>
                       <p className="text-sm">{items.doctorEmail}</p>
                     </div>
                   </div>
@@ -86,7 +113,7 @@ const DiagnosisTable: React.FC<PatientsTableProps> = ({ patientData }) => {
                     </span>
                     <span
                       className="text-destructive cursor-pointer"
-                      // onClick={() => handleDeletePatientDiagnosis(items.id)}
+                      onClick={() => openModal(items.id)}
                     >
                       <FaTrash />
                     </span>
@@ -103,6 +130,11 @@ const DiagnosisTable: React.FC<PatientsTableProps> = ({ patientData }) => {
           )}
         </tbody>
       </table>
+      <ConfirmDeleteModal
+        isOpen={isModalOpen}
+        onConfirm={confirmDelete}
+        onCancel={closeModal}
+      />
     </div>
   );
 };

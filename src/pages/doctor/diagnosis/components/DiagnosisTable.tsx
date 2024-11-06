@@ -55,12 +55,12 @@ const DiagnosisTable: React.FC<PatientsTableProps> = ({ patientData }) => {
       <table className="w-full">
         <thead className="bg-slate-200 py-10 h-12 ">
           <tr>
-            <th className="font-semibold">REPORT NUMBER</th>
-            <th className="font-semibold">PATIENT</th>
-            <th className="font-semibold">DOCTOR</th>
-            <th className="font-semibold">DIAGNOSIS CATEGORY</th>
-            <th className="font-semibold">CREATED ON</th>
-            <th className="font-semibold">ACTION</th>
+            <th className="font-normal">REPORT NUMBER</th>
+            <th className="font-normal">PATIENT</th>
+            <th className="font-normal">DOCTOR</th>
+            <th className="font-normal">DIAGNOSIS CATEGORY</th>
+            <th className="font-normal">CREATED ON</th>
+            <th className="font-normal">ACTION</th>
           </tr>
         </thead>
         <tbody className="w-full p-3">

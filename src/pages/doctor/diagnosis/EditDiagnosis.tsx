@@ -267,7 +267,7 @@ const EditDiagnosis: React.FC = () => {
             <h3>Diagnosis Property Name</h3>
             <h3>Diagnosis Property Value</h3>
             <button
-              className="bg-purple-700 px-3 py-1 rounded-sm text-white"
+              className="bg-blue-600 px-3 py-1 rounded-sm text-white"
               onClick={AddOtherDiagnosis}
             >
               Add
@@ -275,23 +275,33 @@ const EditDiagnosis: React.FC = () => {
           </div>
 
           {diagnosisProperTy.map((property, index) => (
-            <div key={index} className="flex items-center justify-around p-4 bg-white rounded-md shadow shadow-slate-200">
+            <div
+              key={index}
+              className="flex items-center justify-around p-4 bg-white rounded-md shadow shadow-slate-200"
+            >
               <h3>{index + 1}</h3>
               <input
                 type="text"
                 placeholder="Diagnosis Property Name"
                 className="border px-3 w-64 py-2 rounded-sm outline-none"
                 value={property.name}
-                onChange={(e) => handleAddOtherDiagnosisChanges(index, 'name', e.target.value)}
+                onChange={(e) =>
+                  handleAddOtherDiagnosisChanges(index, "name", e.target.value)
+                }
               />
               <input
                 type="text"
                 placeholder="Diagnosis Property Value "
                 className="border px-3 w-64 py-2 rounded-sm outline-none"
-                value={property.value}  
-                onChange={(e) => handleAddOtherDiagnosisChanges(index, 'value', e.target.value)}
+                value={property.value}
+                onChange={(e) =>
+                  handleAddOtherDiagnosisChanges(index, "value", e.target.value)
+                }
               />
-              <span className="text-destructive cursor-pointer" onClick={()=> deleteDiagnosisProperty(index)}>
+              <span
+                className="text-destructive cursor-pointer"
+                onClick={() => deleteDiagnosisProperty(index)}
+              >
                 <FaTrash />
               </span>
             </div>
@@ -299,12 +309,15 @@ const EditDiagnosis: React.FC = () => {
         </div>
         <div className="bottom-btn mt-6 ">
           <button
-            className="px-8 py-2 h-10 bg-purple-700 text-white rounded-lg mr-3"
+            className="px-8 py-2 h-10 bg-blue-600 text-white rounded-lg mr-3"
             onClick={handleSave}
           >
             Save
           </button>
-          <Link className="px-8 py-2 h-10 bg-slate-200 text-black rounded-lg mr-3" to={"/doctor/diagnosis"}>
+          <Link
+            className="px-8 py-2 h-10 bg-slate-200 text-black rounded-lg mr-3"
+            to={"/doctor/diagnosis"}
+          >
             Cancel
           </Link>
         </div>

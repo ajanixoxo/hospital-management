@@ -105,6 +105,7 @@ function EditProfilePage() {
                   size="icon"
                   className="absolute bottom-0 right-0 rounded-full"
                 >
+                  <Input type="file" className="absolute w-3 z-[-1px]"/>
                   <Pencil className="h-4 w-4" />
                 </Button>
               </div>

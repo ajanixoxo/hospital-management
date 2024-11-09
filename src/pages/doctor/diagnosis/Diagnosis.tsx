@@ -56,7 +56,7 @@ const Diagnosis: React.FC = () => {
         </div>
         <button
           type="button"
-          className="bg-purple-700 px-5 py-2 rounded-sm text-white"
+          className="bg-blue-600 px-5 py-2 rounded-sm text-white"
         >
           <Link to={"/doctor/new-diagnosis"}>New Patient Diagnosis Test</Link>
         </button>

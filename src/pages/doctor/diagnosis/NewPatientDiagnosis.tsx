@@ -253,7 +253,7 @@ const NewPatientDiagnosis = () => {
             <h3>Diagnosis Property Name</h3>
             <h3>Diagnosis Property Value</h3>
             <button
-              className="bg-purple-700 px-3 py-1 rounded-sm text-white"
+              className="bg-blue-600 px-3 py-1 rounded-sm text-white"
               onClick={AddOtherDiagnosis}
             >
               Add
@@ -285,7 +285,7 @@ const NewPatientDiagnosis = () => {
         </div>
         <div className="bottom-btn mt-6 ">
           <button
-            className="px-8 py-2 h-10 bg-purple-700 text-white rounded-lg mr-3"
+            className="px-8 py-2 h-10 bg-blue-600 text-white rounded-lg mr-3"
             onClick={handleSave}
           >
             Save

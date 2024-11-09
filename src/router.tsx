@@ -20,6 +20,7 @@ import Signup from "./pages/general/Signup";
 import ForgotPassword from "./pages/general/ForgotPassord";
 import EditDiagnosis from "./pages/doctor/diagnosis/EditDiagnosis";
 import NewPatientDiagnosis from "./pages/doctor/diagnosis/NewPatientDiagnosis";
+import PrescriptionsPage from "./pages/doctor/prescription/page";
 
 // pages
 
@@ -82,6 +83,10 @@ const routes = createBrowserRouter([
       {
         path: "schedule",
         element: <SchedulePage />,
+      },
+      {
+        path: "prescription",
+        element: <PrescriptionsPage />,
       },
       {
        path:"settings",

@@ -1,6 +1,6 @@
 import { Outlet, Link } from "react-router-dom";
 import { useState } from 'react';
-import { FaBars, FaTimes, FaHome, FaUserMd, FaClipboardList, FaHospital, FaBell, FaTasks, FaDiagnoses, FaUser, FaLock, FaGlobe} from 'react-icons/fa';
+import { FaBars, FaTimes, FaHome, FaUserMd, FaClipboardList, FaHospital, FaBell, FaTasks, FaDiagnoses, FaUser, FaLock,  FaFile} from 'react-icons/fa';
 import { FaGear } from "react-icons/fa6";
 import { CiLogout } from "react-icons/ci";
 import NavLinks from "./NavLink";
@@ -97,6 +97,12 @@ export default function DoctorLayout() {
               />
               {isSidebarOpen && <span>Schedules</span>}
             </NavLinks>
+            <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/prescription">
+              <FaFile
+                className={`${isSidebarOpen ? "md:mr-3" : ""} text-lg`}
+              />
+              {isSidebarOpen && <span>Prescription</span>}
+            </NavLinks>
             
                  <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/settings">
               <FaGear
@@ -152,10 +158,7 @@ export default function DoctorLayout() {
         <Link to={"/doctor/settings/change-password"} className="flex items-center"> <FaLock className="mr-3 text-lg" />
           {isSidebarOpen && <span>Change Password</span>}</Link>
       </li>
-      <li className="flex items-center p-2 hover:bg-purple-600 rounded-md cursor-pointer">
-        <Link to={"/doctor/settings"} className="flex items-center"> <FaGlobe className="mr-3 text-lg" />
-          {isSidebarOpen && <span>Change Language</span>}</Link>
-      </li>
+    
       <li className="flex items-center p-2 hover:bg-purple-600 rounded-md cursor-pointer">
         <Link to={"/doctor/settings"} className="flex items-center"> <CiLogout className="mr-3 text-lg" />
           {isSidebarOpen && <span>Logout</span>}</Link>

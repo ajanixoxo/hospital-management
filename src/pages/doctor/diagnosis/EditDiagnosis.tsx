@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import EditInputDropDown from "./components/EditInputDropDown";
+import { FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+interface DiagnosisProperty {
+  name: string;
+  value: string;
+}
 const EditDiagnosis: React.FC = () => {
   const names: string[] = [
     "John Doe",
@@ -63,6 +68,25 @@ const EditDiagnosis: React.FC = () => {
   };
   const handleSave = () => {
     console.log("Form Values ", formValue);
+  };
+  const [diagnosisProperTy, setDiagnosisPropery] = useState<
+    DiagnosisProperty[]
+  >([]);
+  const AddOtherDiagnosis = () => {
+    setDiagnosisPropery([...diagnosisProperTy, { name: "", value: "" }]);
+  };
+  const handleAddOtherDiagnosisChanges = (
+    index: number,
+    field: keyof DiagnosisProperty,
+    value: string
+  ) => {
+    const updatedProperties = [...diagnosisProperTy];
+    updatedProperties[index][field] = value;
+    setDiagnosisPropery(updatedProperties);
+  };
+  const deleteDiagnosisProperty = (index: number) => {
+    const updatedProperties = diagnosisProperTy.filter((_, i) => i !== index);
+    setDiagnosisPropery(updatedProperties);
   };
   return (
     <div className="w-full p-5">
@@ -236,37 +260,66 @@ const EditDiagnosis: React.FC = () => {
             </>
           ))}
         </div>
-        <div className="mt-5">
-          <h3 className="text-lg font-semibold">
-            Add other diagnosis property
-          </h3>
-          <div className="p-2 bg-slate-200 rounded-sm flex items-center justify-around">
-            <div>
-              <span>#</span>
-            </div>
-            <div>
-              <span>Diagnosis Property Name</span>
-            </div>
-            <div>
-              <span> Diagnosis Property Value</span>
-            </div>
-            <div>
-              <button className="px-4 py-2 h-10 bg-purple-700 text-white rounded-lg mr-3">
-                Add
-              </button>
-            </div>
+        <div className="mt-3 ml-2 ">
+          <h3 className="font-semibold">Add other diagnosis property</h3>
+          <div className="flex items-center justify-around p-4 bg-slate-200 rounded-md">
+            <h3>#</h3>
+            <h3>Diagnosis Property Name</h3>
+            <h3>Diagnosis Property Value</h3>
+            <button
+              className="bg-blue-600 px-3 py-1 rounded-sm text-white"
+              onClick={AddOtherDiagnosis}
+            >
+              Add
+            </button>
           </div>
+
+          {diagnosisProperTy.map((property, index) => (
+            <div
+              key={index}
+              className="flex items-center justify-around p-4 bg-white rounded-md shadow shadow-slate-200"
+            >
+              <h3>{index + 1}</h3>
+              <input
+                type="text"
+                placeholder="Diagnosis Property Name"
+                className="border px-3 w-64 py-2 rounded-sm outline-none"
+                value={property.name}
+                onChange={(e) =>
+                  handleAddOtherDiagnosisChanges(index, "name", e.target.value)
+                }
+              />
+              <input
+                type="text"
+                placeholder="Diagnosis Property Value "
+                className="border px-3 w-64 py-2 rounded-sm outline-none"
+                value={property.value}
+                onChange={(e) =>
+                  handleAddOtherDiagnosisChanges(index, "value", e.target.value)
+                }
+              />
+              <span
+                className="text-destructive cursor-pointer"
+                onClick={() => deleteDiagnosisProperty(index)}
+              >
+                <FaTrash />
+              </span>
+            </div>
+          ))}
         </div>
         <div className="bottom-btn mt-6 ">
           <button
-            className="px-8 py-2 h-10 bg-purple-700 text-white rounded-lg mr-3"
+            className="px-8 py-2 h-10 bg-blue-600 text-white rounded-lg mr-3"
             onClick={handleSave}
           >
             Save
           </button>
-          <button className="px-8 py-2 h-10 bg-slate-200 text-black rounded-lg mr-3">
+          <Link
+            className="px-8 py-2 h-10 bg-slate-200 text-black rounded-lg mr-3"
+            to={"/doctor/diagnosis"}
+          >
             Cancel
-          </button>
+          </Link>
         </div>
       </div>
     </div>

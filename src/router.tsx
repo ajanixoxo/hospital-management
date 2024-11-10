@@ -8,7 +8,7 @@ import Appointment from "./pages/doctor/appointment";
 import Patient from "./pages/doctor/patient";
 import Transactions from "./pages/doctor/transactions";
 import DoctorReports from "./pages/doctor/reports";
-import Diagnosis from "./pages/Diagnosis";
+import Diagnosis from "./pages/doctor/diagnosis/Diagnosis";
 import SchedulePage from "./pages/doctor/Schedule";
 import ProfilePage from "./pages/doctor/settings/ProfilePage";
 import EditProfilePage from "./pages/doctor/settings/EditProfilePage";
@@ -21,6 +21,7 @@ import ForgotPassword from "./pages/general/ForgotPassord";
 import EditDiagnosis from "./pages/doctor/diagnosis/EditDiagnosis";
 import NewPatientDiagnosis from "./pages/doctor/diagnosis/NewPatientDiagnosis";
 import PrescriptionsPage from "./pages/doctor/prescription/page";
+import DiagnosisCategory from "./pages/doctor/diagnosis/DiagnosisCategory";
 
 // pages
 
@@ -122,6 +123,14 @@ const routes = createBrowserRouter([
         path: 'new-diagnosis',
         element: <NewPatientDiagnosis />
       },
+
+      {
+        path: 'diagnosis-category',
+        element: <DiagnosisCategory /> 
+      },
+
+      { path: "Schedule", element: <SchedulePage /> },
+
     ],
   },
   {

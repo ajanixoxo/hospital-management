@@ -1,10 +1,9 @@
-<<<<<<< HEAD
+
 import React from "react";
 // import diagnosisData from "@/utils/diagnosis";
 
-=======
-import React, { useState } from "react";
->>>>>>> be902a915c178cda6e5ebb173a2520ff78fe633e
+
+import  { useState } from "react";
 import { FaEdit, FaPrint, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import ConfirmDeleteModal from "./DeleteComfirmModal";

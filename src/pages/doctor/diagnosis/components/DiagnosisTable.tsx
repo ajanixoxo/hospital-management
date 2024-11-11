@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 // import diagnosisData from "@/utils/diagnosis";
 
 import { FaEdit, FaPrint, FaTrash } from "react-icons/fa";

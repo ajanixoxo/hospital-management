@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from 'react'
-import { Search,  Eye, Edit, Trash, Printer } from 'lucide-react'
+import {  Eye, Edit, Trash, Printer } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 // import { Switch } from "@/components/ui/switch"
@@ -100,7 +100,7 @@ export default function PrescriptionsPage() {
                 type="search" 
                 placeholder="Search" 
                 className="max-w-md"
-                prefix={<Search className="w-4 h-4 text-gray-400" />}
+                //prefix={<Search className="w-4 h-4 text-gray-400" />}
               />
               <Button className="bg-blue-600 hover:bg-blue-700">
                 New Prescription

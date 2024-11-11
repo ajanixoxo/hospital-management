@@ -7,6 +7,7 @@ interface DropdownProp {
   selectedOption: string;
   onSelect:   (option: string) => void 
 }
+
 const EditInputDropDown:React.FC<DropdownProp > = ({label, options, selectedOption, onSelect}) => {
   // STATES 
   const [isDropdownOpen, setisDropdownOpen] = useState(false);
@@ -25,7 +26,7 @@ const EditInputDropDown:React.FC<DropdownProp > = ({label, options, selectedOpti
   const filteredOptions = options.filter((option) =>
     option.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
+ 
   return (
     <div>
       <div

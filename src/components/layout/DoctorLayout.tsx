@@ -27,8 +27,9 @@ export default function DoctorLayout() {
     <div className="flex h-screen ">
       {/* Sidebar */}
       <div
-        className={`bg-purple-700 text-white p-4 transition-all duration-300 ${isSidebarOpen ? 'w-64' : 'w-16'
-          } flex flex-col fixed h-full overflow-y-auto`}
+        className={`bg-white text-black p-4 transition-all duration-300 shadow ${
+          isSidebarOpen ? "w-64" : "w-16"
+        } flex flex-col fixed overflow-y-auto`}
       >
         <div className="flex justify-between items-center mb-4">
           <span className="text-2xl font-semibold">
@@ -116,8 +117,9 @@ export default function DoctorLayout() {
 
       {/* Main Content */}
       <div
-        className={`flex-1 bg-gray-100 transition-all duration-300 ${isSidebarOpen ? 'ml-64' : 'ml-16'
-          }`}
+        className={`flex-1 overflow-auto bg-gray-100 transition-all duration-300 ${
+          isSidebarOpen ? "ml-64" : "ml-16"
+        }`}
       >
         {/* Header */}
         <header className="bg-white shadow-md p-4 py-2 md:py-3 flex justify-between items-center">

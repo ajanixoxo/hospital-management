@@ -201,7 +201,7 @@ const Login = () => {
             )}
           </div>
 
-          <div>
+          {/* <div>
             <label className="mb-1 block">Role</label>
             <select
               name="role"
@@ -210,7 +210,7 @@ const Login = () => {
               <option value="Patient">Patient</option>
               <option value="Admin">Admin</option>
             </select>
-          </div>
+          </div> */}
 
           <div className="mt-4">
             <input type="checkbox" name="" className="" /> Remember Me

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import hero from "../../assets/hero.svg";
+import Footer from "@/components/layout/Footer";
 
 const Home = () => {
   return (
@@ -53,6 +54,8 @@ const Home = () => {
           <img src={hero} className="" alt="" />
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 };

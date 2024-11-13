@@ -11,7 +11,7 @@ This is a standard hospital management system
 
 4) Patient Dashboard
 
-5) Staff Dashboard (multi roles HODs and sub admins)
+5) Staff Dashboard (multi roles HODs and sub admins) 
 
 
 ## Advanced Features includes

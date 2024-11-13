@@ -1,5 +1,4 @@
 import { Outlet, Link } from "react-router-dom";
-import DP from "/pfp.jpg";
 import { useState } from "react";
 import {
   FaBars,
@@ -9,19 +8,33 @@ import {
   FaClipboardList,
   FaHospital,
   FaBell,
-  FaDiagnoses,
   FaTasks,
+  FaDiagnoses,
+  FaUser,
+  FaLock,
+  FaFile,
 } from "react-icons/fa";
-
+import { CiLogout } from "react-icons/ci";
 import NavLinks from "./NavLink";
-import { FaBook } from "react-icons/fa6";
+import { FaBook, FaGear } from "react-icons/fa6";
 
 export default function DoctorLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false)
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+  const handleProfileModal = () => {
+    if(isProfileModalOpen === true){
+      setIsProfileModalOpen(false)
+    }else{
+      setIsProfileModalOpen(true)
+    }
+   
+  }
+
+
 
   return (
     <div className="flex h-screen ">
@@ -62,12 +75,11 @@ export default function DoctorLayout() {
               />
               {isSidebarOpen && <span>Appointments</span>}
             </NavLinks>
-{/* 
+            {/* 
             <li className="flex items-center p-2 hover:bg-purple-600 rounded-md cursor-pointer">
               <FaHospital className="mr-3 text-lg" />
               {isSidebarOpen && <span>Departments</span>}
             </li> */}
-
 
             <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/diagnosis">
               <FaDiagnoses
@@ -83,7 +95,6 @@ export default function DoctorLayout() {
               {isSidebarOpen && <span>Transactions</span>}
             </NavLinks>
 
-            
             <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/reports">
               <FaBook
                 className={`${isSidebarOpen ? "md:mr-3 " : ""} text-lg`}
@@ -97,8 +108,15 @@ export default function DoctorLayout() {
               />
               {isSidebarOpen && <span>Schedules</span>}
             </NavLinks>
+            <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/prescription">
+              <FaFile className={`${isSidebarOpen ? "md:mr-3" : ""} text-lg`} />
+              {isSidebarOpen && <span>Prescription</span>}
+            </NavLinks>
 
-
+            <NavLinks isSidebarOpen={isSidebarOpen} href="/doctor/settings">
+              <FaGear className={`${isSidebarOpen ? "md:mr-3" : ""} text-lg`} />
+              {isSidebarOpen && <span>Settings</span>}
+            </NavLinks>
           </ul>
         </nav>
       </div>
@@ -117,12 +135,71 @@ export default function DoctorLayout() {
             <div className="flex items-center">
               <Link to="settings/profile-page">
                 <img
-                  src={DP}
+                 src="https://plus.unsplash.com/premium_photo-1689977968861-9c91dbb16049?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                   alt="Profile"
                   className="rounded-full w-8 object-cover h-8 mr-2"
                 />
               </Link>
-              <span className="text-gray-700 font-medium">Dr. John Doe</span>
+              <button
+                onClick={handleProfileModal}
+                className="text-gray-700 font-medium"
+              >
+                Dr. John Doe
+              </button>
+
+              {isProfileModalOpen && (
+                <div className="absolute w-[300px] h-[400px] right-0 flex justify-center items-center flex-col top-14 bg-white shadow-lg p-2 gap-5 rounded-lg transition">
+                  <div className="flex items-center justify-center gap-3 flex-col">
+                    <div>
+                      <img
+                        src="https://plus.unsplash.com/premium_photo-1689977968861-9c91dbb16049?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt=""
+                        className="rounded-full w-20  object-cover h-20 mr-2"
+                      />
+                    </div>
+
+                    <h1 className="font-semibold text-center ">
+                      Doctor John Doe
+                    </h1>
+                    <p>johndoe@gmail.com</p>
+                  </div>
+                  <div>
+                    <ul>
+                      <li className="flex items-center p-2 hover:bg-purple-600 rounded-md cursor-pointer">
+                        <Link
+                          to="/doctor/settings/edit-profile"
+                          className="flex items-center"
+                        >
+                          {" "}
+                          <FaUser className="mr-3 text-lg" />
+                          <span>Edit Profile</span>
+                        </Link>
+                      </li>
+                      <li className="flex items-center p-2 hover:bg-purple-600 rounded-md cursor-pointer">
+                        <Link
+                          to={"/doctor/settings/change-password"}
+                          className="flex items-center"
+                        >
+                          {" "}
+                          <FaLock className="mr-3 text-lg" />
+                          {isSidebarOpen && <span>Change Password</span>}
+                        </Link>
+                      </li>
+
+                      <li className="flex items-center p-2 hover:bg-purple-600 rounded-md cursor-pointer">
+                        <Link
+                          to={"/doctor/settings"}
+                          className="flex items-center"
+                        >
+                          {" "}
+                          <CiLogout className="mr-3 text-lg" />
+                          {isSidebarOpen && <span>Logout</span>}
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </header>

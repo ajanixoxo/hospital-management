@@ -22,6 +22,10 @@ import EditDiagnosis from "./pages/doctor/diagnosis/EditDiagnosis";
 import NewPatientDiagnosis from "./pages/doctor/diagnosis/NewPatientDiagnosis";
 import PrescriptionsPage from "./pages/doctor/prescription/page";
 import DiagnosisCategory from "./pages/doctor/diagnosis/DiagnosisCategory";
+import Demo from "./pages/doctor/prescription/demo";
+import CreatePrescription from './pages/doctor/prescription/prescription-create';
+import PrescriptionDetails from "./pages/doctor/prescription/prescription-details";
+
 
 // pages
 
@@ -87,29 +91,49 @@ const routes = createBrowserRouter([
       },
       {
         path: "prescription",
-        element: <PrescriptionsPage />,
+        children: [
+          {
+            index: true,
+            element: <PrescriptionsPage />
+          },
+          {
+            path: "demo",
+            element: <Demo />
+
+          },
+          {
+            path: "create-prescription",
+            element: <CreatePrescription />
+
+          },
+          {
+            path: "prescriptionn-details",
+            element: <PrescriptionDetails />
+
+          }
+        ]
       },
       {
-       path:"settings",
-      
-       children: [
-        {
-          index: true,
-          element: <Settings />,
-        },
-        {
-          path: "profile-page",
-          element: <ProfilePage />,
-        },
-        {
-          path: "edit-profile",
-          element: <EditProfilePage />,
-        },
-        {
-          path: "change-password",
-          element: <ChangePassword />,
-        },
-       ]
+        path: "settings",
+
+        children: [
+          {
+            index: true,
+            element: <Settings />,
+          },
+          {
+            path: "profile-page",
+            element: <ProfilePage />,
+          },
+          {
+            path: "edit-profile",
+            element: <EditProfilePage />,
+          },
+          {
+            path: "change-password",
+            element: <ChangePassword />,
+          },
+        ]
       },
       {
         path: "diagnosis",
@@ -126,7 +150,7 @@ const routes = createBrowserRouter([
 
       {
         path: 'diagnosis-category',
-        element: <DiagnosisCategory /> 
+        element: <DiagnosisCategory />
       },
 
       { path: "Schedule", element: <SchedulePage /> },

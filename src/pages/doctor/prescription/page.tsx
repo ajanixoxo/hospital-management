@@ -110,14 +110,14 @@ export default function PrescriptionsPage() {
                           <Button
                             variant="ghost"
                             size="icon"
-                            onClick={() => navigate(`/prescriptions/${prescription.id}`)}
+                            onClick={() => navigate(`./${prescription.id}`)}
                           >
                             <Eye className="w-4 h-4 text-blue-600" />
                           </Button>
                           <Button
                             variant="ghost"
                             size="icon"
-                            onClick={() => navigate(`/prescriptions/${prescription.id}/edit`)}
+                            onClick={() => navigate(`./${prescription.id}/edit`)}
                           >
                             <Edit className="w-4 h-4 text-blue-600" />
                           </Button>

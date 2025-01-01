@@ -25,7 +25,7 @@ import DiagnosisCategory from "./pages/doctor/diagnosis/DiagnosisCategory";
 import Demo from "./pages/doctor/prescription/demo";
 import CreatePrescription from './pages/doctor/prescription/prescription-create';
 import PrescriptionDetails from "./pages/doctor/prescription/prescription-details";
-
+import EditPrescription from "./pages/doctor/prescription/edit-prescription";
 
 // pages
 
@@ -107,8 +107,13 @@ const routes = createBrowserRouter([
 
           },
           {
-            path: "prescriptionn-details",
+            path: ":id",
             element: <PrescriptionDetails />
+
+          },
+          {
+            path: ":id/edit",
+            element: <EditPrescription />
 
           }
         ]

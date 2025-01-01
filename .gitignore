@@ -25,3 +25,5 @@ dist-ssr
 
 # Excluded paths and files
 # src/test/*
+
+.codegpt
